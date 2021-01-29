@@ -68,8 +68,16 @@ export function UserProfileProvider(props) {
       }).then(resp => resp.json()));
   };
 
+  const getCurrentUser = () => {
+    const user = localStorage.getItem("userProfile");
+    if (!user) {
+      return null;
+    }
+    return JSON.parse(user);
+  };
+
   return (
-    <UserProfileContext.Provider value={{ isLoggedIn, login, logout, register, getToken }}>
+    <UserProfileContext.Provider value={{ isLoggedIn, login, logout, register, getToken, getCurrentUser }}>
       {isFirebaseReady
         ? props.children
         : <Spinner className="app-spinner dark" />}

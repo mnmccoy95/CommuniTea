@@ -12,7 +12,6 @@ namespace CommuniTea.Models
         public UserProfile UserProfile { get; set; }
         public string ImageLocation { get; set; }
         public string Content { get; set; }
-        public List<Tag> Tag { get; set; }
         public List<PostTag> PostTag { get; set; }
     }
 }

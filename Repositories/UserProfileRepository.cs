@@ -21,9 +21,7 @@ namespace CommuniTea.Repositories
         public UserProfile GetByFirebaseUserId(string firebaseUserId)
         {
             return _context.UserProfile
-                .Include(up => up.Post)
                 .FirstOrDefault(up => up.FirebaseUserId == firebaseUserId);
-
         }
 
         public List<UserProfile> GetAll()

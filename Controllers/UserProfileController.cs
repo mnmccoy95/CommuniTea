@@ -12,15 +12,18 @@ using CommuniTea.Repositories;
 
 namespace CommuniTea.Controllers
 {
-    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class UserProfileController : ControllerBase
     {
         private readonly IUserProfileRepository _repo;
-        public UserProfileController(IUserProfileRepository repo)
+        private readonly IQuestionRepository _questionRepo;
+        private readonly IAnswerRepository _answerRepo;
+        public UserProfileController(IUserProfileRepository repo, IQuestionRepository questionRepo, IAnswerRepository answerRepo)
         {
             _repo = repo;
+            _questionRepo = questionRepo;
+            _answerRepo = answerRepo;
         }
 
         [HttpGet("{firebaseUserId}")]
@@ -48,21 +51,23 @@ namespace CommuniTea.Controllers
                 userProfile);
         }
 
-        [HttpPut("{id}")]
-        public IActionResult Put(int id, UserProfile userProfile)
+        [HttpGet("answer/{answerIds}")]
+        public IActionResult GetAcceptance(List<int> answerIds)
         {
-            var currentUser = GetCurrentUserProfile();
+            var answers = _answerRepo.Get();
+            bool acceptance = true;
+            foreach(int id in answerIds)
+            {
+                if(answers[id].Correct == false)
+                {
+                    acceptance = false;
+                }
+            }
 
-            if (currentUser.Id == userProfile.Id)
-            {
-                _repo.Update(currentUser);
-                return NoContent();
-            }
-            else
-            {
-                _repo.Update(userProfile);
-                return NoContent();
-            }
+            var user = GetCurrentUserProfile();
+            user.Approved = acceptance;
+            _repo.Update(user);
+            return Ok(user);
         }
 
         private UserProfile GetCurrentUserProfile()

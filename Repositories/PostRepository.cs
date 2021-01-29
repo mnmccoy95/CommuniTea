@@ -22,15 +22,14 @@ namespace CommuniTea.Repositories
         {
             return _context.Post
                 .Include(p => p.UserProfile)
-                .Include(p => p.Tag)
+                .Include(p => p.PostTag)
                 .Select(p => new PostSummary()
                 {
                     Id = p.Id,
                     ImageLocation = p.ImageLocation,
                     AuthorId = p.UserProfileId,
                     AuthorName = p.UserProfile.DisplayName,
-                    Context = p.Content,
-                    Tag = p.Tag
+                    Context = p.Content
                 }).ToList();
         }
 
@@ -38,7 +37,7 @@ namespace CommuniTea.Repositories
         {
             return _context.Post
                 .Include(p => p.UserProfile)
-                .Include(p => p.Tag)
+                .Include(p => p.PostTag)
                 .Where(p => p.Id == id)
                 .FirstOrDefault();
         }
@@ -72,7 +71,7 @@ namespace CommuniTea.Repositories
         public List<PostSummary> GetByUserProfileId(int id)
         {
             return _context.Post
-                .Include(p => p.Tag)
+                .Include(p => p.PostTag)
                 .Where(p => p.UserProfileId == id)
                 .Select(p => new PostSummary()
                 {
@@ -80,8 +79,7 @@ namespace CommuniTea.Repositories
                     ImageLocation = p.ImageLocation,
                     AuthorId = p.UserProfileId,
                     AuthorName = p.UserProfile.DisplayName,
-                    Context = p.Content,
-                    Tag = p.Tag
+                    Context = p.Content
                 })
                 .ToList();
         }
