@@ -7,6 +7,7 @@ using System.Security.Claims;
 using System.Threading.Tasks;
 using CommuniTea.Models;
 using CommuniTea.Repositories;
+using CommuniTea.Models.ViewModels;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -51,16 +52,19 @@ namespace CommuniTea.Controllers
                 userProfile);
         }
 
-        [HttpGet("answer/{answerIds}")]
-        public IActionResult GetAcceptance(List<int> answerIds)
+        [HttpPost("answer")]
+        public IActionResult GetAcceptance(int[] answers)
         {
-            var answers = _answerRepo.Get();
+            var answerList = _answerRepo.Get();
             bool acceptance = true;
-            foreach(int id in answerIds)
+            foreach(int id in answers)
             {
-                if(answers[id].Correct == false)
+                foreach(Answer a in answerList)
                 {
-                    acceptance = false;
+                    if(a.Id == id && a.Correct == false)
+                    {
+                        acceptance = false;
+                    }
                 }
             }
 
