@@ -2,6 +2,8 @@ import React, { useContext, useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 import { QuizContext } from "../providers/QuizProvider"
 import { UserProfileContext } from "../providers/UserProfileProvider"
+import { Form, FormGroup } from "reactstrap"
+import "./Quiz.css"
 
 const Quiz = () => {
   const [newPost, setNewPost] = useState([]);
@@ -59,29 +61,33 @@ const Quiz = () => {
     const questionCard = (q) => {
       if (q.questionType.name === "MultipleChoice") {
         return (<>
-          <fieldset id={q.id}>
-            <div>{q.content}</div>
-            {q.answers.map((a) => {
-              return (<>
-                <input type="radio" value={a.id} name={q.id} id={a.id} required
-                  onChange={(e) => { handleControlledInputChange(e) }}></input>
-                <label htmlFor={a.id}>{a.content}</label><br />
-              </>)
-            })}
+          <fieldset className="questionBox" id={q.id}>
+            <div className="form-group">
+              <div className="questionTitle">{q.content}</div>
+              {q.answers.map((a) => {
+                return (<>
+                  <input type="radio" className="quizAnswer" value={a.id} name={q.id} id={a.id} required
+                    onChange={(e) => { handleControlledInputChange(e) }}></input>
+                  <label htmlFor={a.id}>{a.content}</label><br />
+                </>)
+              })}
+            </div>
           </fieldset>
         </>
         )
       } else if (q.questionType.name === "TrueFalse") {
         return (<>
-          <fieldset id={q.id}>
-            <div>{q.content}</div>
-            {q.answers.map((a) => {
-              return (<>
-                <input type="radio" value={a.id} name={q.id} id={a.id} required
-                  onChange={(e) => { handleControlledInputChange(e) }}></input>
-                <label htmlFor={a.id}>{a.content}</label><br />
-              </>)
-            })}
+          <fieldset className="questionBox" id={q.id}>
+            <div className="form-group">
+              <div className="questionTitle">{q.content}</div>
+              {q.answers.map((a) => {
+                return (<>
+                  <input type="radio" className="quizAnswer" value={a.id} name={q.id} id={a.id} required
+                    onChange={(e) => { handleControlledInputChange(e) }}></input>
+                  <label htmlFor={a.id}>{a.content}</label><br />
+                </>)
+              })}
+            </div>
           </fieldset>
         </>
         )
@@ -112,14 +118,19 @@ const Quiz = () => {
   }
 
   return (
-    <form>
-      {quiz.map((q) => (
-        <fieldset className="m-4" key={q.id}>
-          <QuestionCard key={q.id} question={q} />
-        </fieldset>
-      ))}
-      <button onClick={(e) => { handleSubmitQuiz(e) }}>Submit Quiz</button>
-    </form>
+    <section className="new-post-form-container">
+      <div className="new-post-form-area">
+        <h2 className="new-post-form-title">Quiz Time!</h2>
+        <form className="quiz-form">
+          {quiz.map((q) => (
+
+            <QuestionCard key={q.id} question={q} />
+
+          ))}
+          <button className="btn btn-quiz-submit" onClick={(e) => { handleSubmitQuiz(e) }}>Submit Quiz</button>
+        </form>
+      </div>
+    </section>
   )
 }
 

@@ -1,3 +1,23 @@
 .pointer {
   cursor: pointer;
 }
+
+.navbar {
+  background-color: lightpink;
+}
+
+.navbar-brand {
+  color:rgb(255, 95, 122)!important;
+}
+
+.nav-link {
+  color:rgb(255, 95, 122)!important;
+}
+
+.navbar-text {
+  color:rgb(255, 95, 122)!important;
+}
+
+.navbar-toggler {
+  background-color:rgb(255, 95, 122)!important;
+}

@@ -1,0 +1,52 @@
+.new-post-form-container {
+    display: flex;
+    justify-content: center;
+}
+
+.new-post-form-area {
+    margin-top: 1em;
+    padding: 2em;
+    border: 2px solid rgb(196, 187, 187);
+    width: 50%;
+    background-color: rgb(255, 233, 240);
+    color:gray;
+}
+
+.new-post-form-title {
+    margin-bottom: 1em;
+    color:gray;
+}
+
+
+.new-post-label {
+    float: left;
+    margin-left: 5em;
+    font-weight: 700;
+}
+
+.hidden{
+    display: none;
+}
+
+.form-group{
+  text-align: left;
+}
+
+.quizAnswer {
+  margin-right: .5em;
+}
+
+.questionBox {
+  border-bottom: 1px solid;
+  margin-top: 1em;
+}
+
+.questionTitle {
+  margin-bottom: 1em;
+}
+
+.btn-quiz-submit{
+  background-color: lightpink!important;
+  color: white!important;
+  margin-top: 1em;
+}

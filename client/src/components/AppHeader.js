@@ -29,7 +29,7 @@ const AppHeader = () => {
 
   return (
     <div>
-      <Navbar color="dark" dark expand="md">
+      <Navbar dark expand="md">
         <NavbarBrand tag={Link} to="/">
           CommuniTea
         </NavbarBrand>
