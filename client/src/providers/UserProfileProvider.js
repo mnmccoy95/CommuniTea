@@ -1,4 +1,5 @@
 import React, { useState, useEffect, createContext } from "react";
+import { useHistory } from "react-router-dom"
 import { Spinner } from "reactstrap";
 import firebase from "firebase/app";
 import "firebase/auth";
@@ -7,6 +8,7 @@ export const UserProfileContext = createContext();
 
 export function UserProfileProvider(props) {
   const apiUrl = "/api/userprofile";
+  const history = useHistory();
 
   const userProfile = localStorage.getItem("userProfile");
   const [isLoggedIn, setIsLoggedIn] = useState(userProfile != null);
@@ -22,8 +24,15 @@ export function UserProfileProvider(props) {
     return firebase.auth().signInWithEmailAndPassword(email, pw)
       .then((signInResponse) => getUserProfile(signInResponse.user.uid))
       .then((userProfile) => {
-        localStorage.setItem("userProfile", JSON.stringify(userProfile));
-        setIsLoggedIn(true);
+        if (userProfile.approved === 1) {
+          localStorage.setItem("userProfile", JSON.stringify(userProfile));
+          setIsLoggedIn(true);
+          return userProfile
+        } else if (userProfile.approved === 2) {
+          localStorage.setItem("userProfile", JSON.stringify(userProfile))
+          setIsLoggedIn(true);
+          return userProfile
+        }
       });
   };
 

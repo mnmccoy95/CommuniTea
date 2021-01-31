@@ -18,16 +18,29 @@ namespace CommuniTea.Controllers
     public class QuestionController : ControllerBase
     {
         private readonly IQuestionRepository _repo;
-        public QuestionController(IQuestionRepository repo)
+        private readonly IUserProfileRepository _userProfileRepo;
+        public QuestionController(IQuestionRepository repo, IUserProfileRepository userProfileRepo)
         {
             _repo = repo;
+            _userProfileRepo = userProfileRepo;
         }
 
         [HttpGet]
         public IActionResult Get()
         {
+            if(GetCurrentUserProfile().Approved == 1 || GetCurrentUserProfile().Approved == 0)
+            {
+                return BadRequest();
+            }
+
             var questions = _repo.Get();
             return Ok(questions);
+        }
+
+        private UserProfile GetCurrentUserProfile()
+        {
+            var firebaseUserId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
+            return _userProfileRepo.GetByFirebaseUserId(firebaseUserId);
         }
     }
 }

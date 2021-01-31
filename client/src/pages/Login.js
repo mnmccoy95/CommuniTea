@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import { UserProfileContext } from "../providers/UserProfileProvider";
 
 const Login = () => {
-  const { login } = useContext(UserProfileContext);
+  const { login, getCurrentUser } = useContext(UserProfileContext);
   const [loading, setLoading] = useState(false);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -17,7 +17,11 @@ const Login = () => {
     login(email, password)
       .then((user) => {
         setLoading(false);
-        history.push("/");
+        if (user.approved === 2) {
+          history.push("/quiz")
+        } else {
+          history.push("/");
+        }
       })
       .catch((err) => {
         setLoading(false);

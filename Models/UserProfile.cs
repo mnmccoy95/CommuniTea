@@ -14,7 +14,7 @@ namespace CommuniTea.Models
         public string Bio { get; set; }
         public string Pronouns { get; set; }
         public string FirebaseUserId { get; set; }
-        public bool Approved { get; set; }
+        public int Approved { get; set; }
         public List<Post> Post { get; set; }
         public List<Inspiration> Inspiration { get; set; }
     }

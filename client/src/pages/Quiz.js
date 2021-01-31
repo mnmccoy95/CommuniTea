@@ -5,7 +5,8 @@ import { UserProfileContext } from "../providers/UserProfileProvider"
 
 const Quiz = () => {
   const [newPost, setNewPost] = useState([]);
-  const { getToken } = useContext(UserProfileContext);
+  const { getToken, logout } = useContext(UserProfileContext);
+  const history = useHistory();
 
   const handleSubmitQuiz = (e) => {
     e.preventDefault();
@@ -26,7 +27,13 @@ const Quiz = () => {
         },
         body: JSON.stringify(answers)
       }).then(resp => resp.json())
-        .then(resp => console.log(resp)));
+        .then((resp) => {
+          if (resp.approved === 1) {
+            history.push("/")
+          } else {
+            logout()
+          }
+        }))
   }
 
   const handleControlledInputChange = (event) => {

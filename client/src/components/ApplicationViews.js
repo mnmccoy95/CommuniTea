@@ -7,7 +7,20 @@ import Register from '../pages/Register';
 import Quiz from '../pages/Quiz'
 
 const ApplicationViews = () => {
-  const { isLoggedIn } = useContext(UserProfileContext);
+  const { isLoggedIn, getCurrentUser } = useContext(UserProfileContext);
+  const user = getCurrentUser();
+
+  const approvalChecker = () => {
+    if (user && user.approved === 2) {
+      return (
+        <QuizProvider>
+          <Route path="/quiz">
+            <Quiz />
+          </Route>
+        </QuizProvider>)
+
+    }
+  }
 
   return (
     <Switch>
@@ -20,11 +33,7 @@ const ApplicationViews = () => {
       <Route path="/register">
         <Register />
       </Route>
-      <QuizProvider>
-        <Route path="/quiz">
-          <Quiz />
-        </Route>
-      </QuizProvider>
+      {approvalChecker()}
     </Switch>
   );
 };

@@ -11,6 +11,7 @@ const Register = () => {
   const [displayName, setDisplayName] = useState("");
   const [email, setEmail] = useState("");
   const [pronouns, setPronouns] = useState("");
+  const [bio, setBio] = useState("");
   const [password, setPassword] = useState("");
   const [confirm, setConfirm] = useState("");
   const history = useHistory();
@@ -58,7 +59,8 @@ const Register = () => {
       displayName,
       email,
       imageLocation,
-      pronouns
+      pronouns,
+      bio
     };
     register(profile, password)
       .then((user) => {
@@ -119,6 +121,16 @@ const Register = () => {
             className="form-control"
             name="pronouns"
             placeholder="Pronouns"
+            required="required"
+          />
+        </div>
+        <div className="form-group hidden">
+          <Input
+            onChange={(e) => setBio(e.target.value)}
+            type="text"
+            className="form-control"
+            name="bio"
+            placeholder="Bio"
             required="required"
           />
         </div>

@@ -31,7 +31,7 @@ namespace CommuniTea.Controllers
         public IActionResult GetUserProfile(string firebaseUserId)
         {
             var user = _repo.GetByFirebaseUserId(firebaseUserId);
-            if (user.Approved == false)
+            if (user.Approved == 0)
             {
                 return BadRequest();
             }
@@ -45,6 +45,7 @@ namespace CommuniTea.Controllers
         [HttpPost]
         public IActionResult Post(UserProfile userProfile)
         {
+            userProfile.Approved = 2;
             _repo.Add(userProfile);
             return CreatedAtAction(
                 nameof(GetUserProfile),
@@ -55,15 +56,20 @@ namespace CommuniTea.Controllers
         [HttpPost("answer")]
         public IActionResult GetAcceptance(int[] answers)
         {
+            if (GetCurrentUserProfile().Approved == 1 || GetCurrentUserProfile().Approved == 0)
+            {
+                return BadRequest();
+            }
+
             var answerList = _answerRepo.Get();
-            bool acceptance = true;
+            int acceptance = 1;
             foreach(int id in answers)
             {
                 foreach(Answer a in answerList)
                 {
                     if(a.Id == id && a.Correct == false)
                     {
-                        acceptance = false;
+                        acceptance = 0;
                     }
                 }
             }
