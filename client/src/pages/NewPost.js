@@ -91,7 +91,6 @@ const NewPost = () => {
       history.push("/login")
     }
     else {
-      console.log(post)
       submitPost(post)
     }
   }
