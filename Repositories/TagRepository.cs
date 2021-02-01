@@ -18,7 +18,7 @@ namespace CommuniTea.Repositories
 
         public List<Tag> Get()
         {
-            return _context.Tag.OrderBy(c => c.Name).ToList();
+            return _context.Tag.ToList();
         }
         public Tag GetById(int id)
         {

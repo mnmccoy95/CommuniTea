@@ -39,6 +39,31 @@ const AppHeader = () => {
             {user ? (
               <>
                 <NavItem>
+                  <NavLink to="/newpost" tag={Link}>
+                    New Post
+                  </NavLink>
+                </NavItem>
+                <NavItem>
+                  <NavLink to="/discover" tag={Link}>
+                    Discover
+                  </NavLink>
+                </NavItem>
+                <NavItem>
+                  <NavLink>
+                    Search
+                  </NavLink>
+                </NavItem>
+                <NavItem>
+                  <NavLink>
+                    Inspiration
+                  </NavLink>
+                </NavItem>
+                <NavItem>
+                  <NavLink>
+                    {user.displayName}
+                  </NavLink>
+                </NavItem>
+                <NavItem>
                   <NavLink className="pointer" onClick={logoutAndReturn}>
                     Logout
                   </NavLink>
@@ -59,11 +84,6 @@ const AppHeader = () => {
                 </>
               )}
           </Nav>
-          {user ? (
-            <NavbarText className="d-sm-none d-md-block">
-              Welcome {user.displayName}
-            </NavbarText>
-          ) : null}
         </Collapse>
       </Navbar>
     </div>

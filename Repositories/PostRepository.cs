@@ -22,14 +22,16 @@ namespace CommuniTea.Repositories
         {
             return _context.Post
                 .Include(p => p.UserProfile)
-                .Include(p => p.PostTag)
+                .Include(p => p.PostTag).ThenInclude(pt => pt.Tag)
                 .Select(p => new PostSummary()
                 {
                     Id = p.Id,
                     ImageLocation = p.ImageLocation,
                     AuthorId = p.UserProfileId,
                     AuthorName = p.UserProfile.DisplayName,
-                    Context = p.Content
+                    Context = p.Content,
+                    PostTag = p.PostTag
+
                 }).ToList();
         }
 

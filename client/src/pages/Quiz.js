@@ -4,6 +4,7 @@ import { QuizContext } from "../providers/QuizProvider"
 import { UserProfileContext } from "../providers/UserProfileProvider"
 import { Form, FormGroup } from "reactstrap"
 import "./Quiz.css"
+import WindowChecker from "../utils/WindowChecker";
 
 const Quiz = () => {
   const [newPost, setNewPost] = useState([]);
@@ -53,6 +54,7 @@ const Quiz = () => {
   const { quiz, getQuiz } = useContext(QuizContext);
 
   useEffect(() => {
+    WindowChecker()
     getQuiz();
   }, [])
 
@@ -66,7 +68,7 @@ const Quiz = () => {
               <div className="questionTitle">{q.content}</div>
               {q.answers.map((a) => {
                 return (<>
-                  <input type="radio" className="quizAnswer" value={a.id} name={q.id} id={a.id} required
+                  <input type="radio" className="quizAnswer" value={a.id} name={q.id} id={a.id} required="required"
                     onChange={(e) => { handleControlledInputChange(e) }}></input>
                   <label htmlFor={a.id}>{a.content}</label><br />
                 </>)
@@ -82,7 +84,7 @@ const Quiz = () => {
               <div className="questionTitle">{q.content}</div>
               {q.answers.map((a) => {
                 return (<>
-                  <input type="radio" className="quizAnswer" value={a.id} name={q.id} id={a.id} required
+                  <input type="radio" className="quizAnswer" value={a.id} name={q.id} id={a.id} required="required"
                     onChange={(e) => { handleControlledInputChange(e) }}></input>
                   <label htmlFor={a.id}>{a.content}</label><br />
                 </>)
