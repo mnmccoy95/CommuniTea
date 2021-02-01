@@ -19,13 +19,11 @@ namespace Tabloid_Fullstack.Controllers
 
         private IPostRepository _repo;
         private IUserProfileRepository _userRepo;
-        private ITagRepository _tagRepo;
 
-        public PostController(IPostRepository repo, IUserProfileRepository userRepo, ITagRepository tagRepository)
+        public PostController(IPostRepository repo, IUserProfileRepository userRepo)
         {
             _repo = repo;
             _userRepo = userRepo;
-            _tagRepo = tagRepository;
         }
 
 
@@ -94,34 +92,21 @@ namespace Tabloid_Fullstack.Controllers
         }
 
         [HttpPut("{id}")]
-        public IActionResult Update(int id, Post post)
+        public IActionResult Update(int id, PostSummary postSummary)
         {
-            if (id != post.Id)
+            if (id != postSummary.Id)
             {
                 return BadRequest();
             }
 
             var user = GetCurrentUserProfile();
 
-            if (user.Id != post.UserProfileId)
+            if (user.Id != postSummary.AuthorId)
             {
                 return Unauthorized();
             }
-
-            _repo.Update(post);
-            return NoContent();
-        }
-
-        [HttpPut("approval/{id}")]
-        public IActionResult Approval(int id, Post post)
-        {
-            if (id != post.Id)
-            {
-                return BadRequest();
-            }
-
-            var user = GetCurrentUserProfile();
-
+            Post post = _repo.GetById(postSummary.Id);
+            post.Content = postSummary.Context;
             _repo.Update(post);
             return NoContent();
         }

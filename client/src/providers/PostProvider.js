@@ -55,6 +55,33 @@ export function PostProvider(props) {
     );
   };
 
+  const updatePost = (post) => {
+    post.userProfile = null
+    getToken().then((token) => {
+      fetch(`${apiUrl}/${post.id}`, {
+        method: "PUT",
+        headers: {
+          Authorization: `Bearer ${token}`,
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(post)
+      })
+        .then(getAllPosts)
+    })
+  }
+
+  const deletePost = (post) => {
+    getToken().then((token) => {
+      fetch(`${apiUrl}/${post.id}`, {
+        method: "DELETE",
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
+        .then(getAllPosts)
+    })
+  }
+
   return (
     <PostContext.Provider
       value={{
@@ -62,7 +89,9 @@ export function PostProvider(props) {
         getPostsByUserId,
         setPosts,
         posts,
-        getPostsByTagId
+        getPostsByTagId,
+        updatePost,
+        deletePost
       }}
     >
       {props.children}
