@@ -38,6 +38,13 @@ namespace CommuniTea.Controllers
             return Ok(tag);
         }
 
+        [HttpGet("{name}")]
+        public IActionResult GetByName(string name)
+        {
+            var tag = _tagRepo.GetByName(name);
+            return Ok(tag);
+        }
+
         [HttpPost]
         public IActionResult Post(Tag tag)
         {

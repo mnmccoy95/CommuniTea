@@ -4,10 +4,17 @@ import { UserProfileContext } from "../providers/UserProfileProvider"
 import { useHistory } from "react-router-dom";
 import WindowChecker from "../utils/WindowChecker";
 import "./NewPost.css"
+import { Typeahead } from 'react-bootstrap-typeahead';
+import { FormGroup } from "reactstrap"
+import 'react-bootstrap-typeahead/css/Typeahead.css';
+import { PostTagContext } from "../providers/PostTagProvider"
 
 const NewPost = () => {
   const { tags, getTags } = useContext(TagContext);
   const { getToken } = useContext(UserProfileContext);
+  const { addPostTag } = useContext(PostTagContext);
+  const [multiSelections, setMultiSelections] = useState([]);
+  const [post, setPost] = useState([]);
   const history = useHistory();
 
   useEffect(() => {
@@ -53,27 +60,39 @@ const NewPost = () => {
         body: JSON.stringify(post)
       })
         .then((res) => res.json())
+        .then((res) => {
+          for (const tag of multiSelections) {
+            const postId = res.id;
+            const tagId = tag.id;
+            const postTag = {
+              postId,
+              tagId
+            };
+            addPostTag(postTag)
+          }
+        })
         .then((data) => history.push(`/`))
         .then(localStorage.removeItem("image"))
     })
   }
 
-  const newPost = {}
-
   const handleControlledInputChange = (event) => {
-    newPost[event.target.id] = event.target.value
+    const newPost = { ...post }
+    newPost[event.target.name] = event.target.value
+    setPost(newPost)
   }
 
   const handleClickSubmitPost = (event) => {
     event.preventDefault()
-    newPost.imageLocation = localStorage.getItem("image");
+    post.imageLocation = localStorage.getItem("image");
 
     const user = JSON.parse(localStorage.getItem('userProfile'));
     if (user == null) {
       history.push("/login")
     }
     else {
-      submitPost(newPost)
+      console.log(post)
+      submitPost(post)
     }
   }
 
@@ -102,7 +121,22 @@ const NewPost = () => {
           <fieldset>
             <div className="form-group hidden">
               <label className="new-post-label" htmlFor="newBody"></label>
-              <input type="textarea" className="newBody" id="content" name="newBody" placeholder="Tell us more!" onChange={(e) => { handleControlledInputChange(e) }} required autoFocus />
+              <input type="textarea" className="newBody" id="content" name="content" placeholder="Tell us more!" onChange={(e) => { handleControlledInputChange(e) }} required autoFocus />
+            </div>
+          </fieldset>
+          <fieldset>
+            <div className="form-group hidden">
+              <FormGroup style={{ marginTop: '20px' }}>
+                <Typeahead
+                  id="basic-typeahead-multiple"
+                  labelKey="name"
+                  multiple
+                  onChange={setMultiSelections}
+                  options={tags}
+                  placeholder="Choose tags..."
+                  selected={multiSelections}
+                />
+              </FormGroup>
             </div>
           </fieldset>
           <fieldset className="hidden">

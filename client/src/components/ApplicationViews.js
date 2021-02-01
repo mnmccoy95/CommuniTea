@@ -9,6 +9,7 @@ import { PostProvider } from '../providers/PostProvider'
 import { TagProvider } from '../providers/TagProvider'
 import Discover from '../pages/Discover'
 import NewPost from '../pages/NewPost'
+import { PostTagProvider } from '../providers/PostTagProvider';
 
 const ApplicationViews = () => {
   const { isLoggedIn, getCurrentUser } = useContext(UserProfileContext);
@@ -25,16 +26,18 @@ const ApplicationViews = () => {
 
     } else if (user && user.approved === 1) {
       return (
-        <PostProvider>
-          <TagProvider>
-            <Route path="/discover">
-              <Discover />
-            </Route>
-            <Route path="/newpost">
-              <NewPost />
-            </Route>
-          </TagProvider>
-        </PostProvider>
+        <PostTagProvider>
+          <PostProvider>
+            <TagProvider>
+              <Route path="/discover">
+                <Discover />
+              </Route>
+              <Route path="/newpost">
+                <NewPost />
+              </Route>
+            </TagProvider>
+          </PostProvider>
+        </PostTagProvider>
       )
     }
   }
