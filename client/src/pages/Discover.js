@@ -16,7 +16,7 @@ const Explore = () => {
     <>
       <Container>
         <Row>
-          <Col className="col-lg-10">
+          <Col>
             <PostList posts={posts} />
           </Col>
         </Row>

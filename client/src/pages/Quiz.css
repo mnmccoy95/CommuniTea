@@ -12,6 +12,13 @@
     color:gray;
 }
 
+@media screen and (max-width: 700px) {
+  .new-post-form-area{
+    width: 100%;
+    height:auto;
+  }
+}
+
 .new-post-form-title {
     margin-bottom: 1em;
     color:gray;

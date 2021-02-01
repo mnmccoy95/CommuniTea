@@ -1,3 +1,19 @@
 .hidden{
   display: none;
 }
+
+.defaultImage {
+  width: 100%;
+  height: auto;
+}
+
+.uploadForm {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.uploadButton {
+  width: 10em;
+  align-self: center;
+}

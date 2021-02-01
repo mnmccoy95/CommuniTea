@@ -27,6 +27,40 @@ const AppHeader = () => {
     });
   };
 
+  const userChecker = () => {
+    if (user && user.approved === 2) {
+      return (
+        <>
+          <NavItem>
+            <NavLink to="/quiz" tag={Link}>
+              Quiz
+            </NavLink>
+          </NavItem>
+          <NavItem>
+            <NavLink className="pointer" onClick={logoutAndReturn}>
+              Logout
+          </NavLink>
+          </NavItem>
+        </>
+      )
+    } else {
+      return (
+        <>
+          <NavItem>
+            <NavLink to="/login" tag={Link}>
+              Login
+                  </NavLink>
+          </NavItem>
+          <NavItem>
+            <NavLink to="/register" tag={Link}>
+              Register
+                  </NavLink>
+          </NavItem>
+        </>
+      )
+    }
+  }
+
   return (
     <div>
       <Navbar dark expand="md">
@@ -36,7 +70,7 @@ const AppHeader = () => {
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar>
           <Nav className="mr-auto" navbar>
-            {user ? (
+            {user && user.approved === 1 ? (
               <>
                 <NavItem>
                   <NavLink to="/newpost" tag={Link}>
@@ -70,19 +104,9 @@ const AppHeader = () => {
                 </NavItem>
               </>
             ) : (
-                <>
-                  <NavItem>
-                    <NavLink to="/login" tag={Link}>
-                      Login
-                  </NavLink>
-                  </NavItem>
-                  <NavItem>
-                    <NavLink to="/register" tag={Link}>
-                      Register
-                  </NavLink>
-                  </NavItem>
-                </>
+                userChecker()
               )}
+
           </Nav>
         </Collapse>
       </Navbar>

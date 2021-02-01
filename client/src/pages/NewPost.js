@@ -85,7 +85,7 @@ const NewPost = () => {
         <h2 className="new-post-form-title">Create A New Post</h2>
         <form id="newPostForm" onSubmit={(e) => { handleClickSubmitPost(e) }}>
           <fieldset>
-            <div className="form-group">
+            <div className="form-group uploadForm">
               <div className='defaultImageContainer'>
                 <img className='defaultImage' src={localStorage.image ? localStorage.image : 'https://build.dfomer.com/wp-content/uploads/2016/04/dummy-post-horisontal-thegem-blog-default.jpg'} />
               </div>
@@ -93,9 +93,9 @@ const NewPost = () => {
                 <h6 className="loadingImage">Loading...</h6>
               ) : <></>}
               <br />
-              <label htmlFor="embedpollfileinput" className="btn btn-info notHidden">
+              <label htmlFor="embedpollfileinput" className="btn btn-info notHidden uploadButton">
                 Upload image
-                            </label>
+              </label>
               <input hidden type="file" onChange={uploadImage} className="inputfile" id="embedpollfileinput" />
             </div>
           </fieldset>
@@ -105,7 +105,7 @@ const NewPost = () => {
               <input type="textarea" className="newBody" id="content" name="newBody" placeholder="Tell us more!" onChange={(e) => { handleControlledInputChange(e) }} required autoFocus />
             </div>
           </fieldset>
-          <fieldset>
+          <fieldset className="hidden">
             <button className="submitNewPostBtn hidden btn btn-success" type="submit" > Submit Post </button>
           </fieldset>
         </form>

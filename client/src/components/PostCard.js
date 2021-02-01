@@ -4,6 +4,7 @@ import { useHistory } from "react-router-dom";
 import TagList from "./TagList"
 import { UserProfileContext } from "../providers/UserProfileProvider"
 import { PostContext } from "../providers/PostProvider"
+import "../pages/Discover.css"
 
 const PostCard = ({ post }) => {
   const { getCurrentUser } = useContext(UserProfileContext);
@@ -58,7 +59,7 @@ const PostCard = ({ post }) => {
           <p>{post.authorName}</p>
         </div>
         <div>
-          <img src={post.imageLocation} alt={post.authorName}></img>
+          <img className="postImage" src={post.imageLocation} alt={post.authorName}></img>
         </div>
         <div>
           {isEditing ? (
