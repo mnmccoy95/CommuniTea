@@ -9,6 +9,9 @@ import {
   NavItem,
   NavLink,
   NavbarText,
+  Form,
+  Button,
+  Input
 } from 'reactstrap';
 import './AppHeader.css';
 import { UserProfileContext } from "../providers/UserProfileProvider"
@@ -80,11 +83,6 @@ const AppHeader = () => {
                 <NavItem>
                   <NavLink to="/discover" tag={Link}>
                     Discover
-                  </NavLink>
-                </NavItem>
-                <NavItem>
-                  <NavLink>
-                    Search
                   </NavLink>
                 </NavItem>
                 <NavItem>

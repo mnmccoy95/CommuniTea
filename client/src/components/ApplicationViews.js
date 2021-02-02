@@ -10,6 +10,7 @@ import { TagProvider } from '../providers/TagProvider'
 import Discover from '../pages/Discover'
 import NewPost from '../pages/NewPost'
 import { PostTagProvider } from '../providers/PostTagProvider';
+import Search from "../pages/Search"
 
 const ApplicationViews = () => {
   const { isLoggedIn, getCurrentUser } = useContext(UserProfileContext);
@@ -30,10 +31,14 @@ const ApplicationViews = () => {
           <PostProvider>
             <TagProvider>
               <Route path="/discover">
+                <Search />
                 <Discover />
               </Route>
               <Route path="/newpost">
                 <NewPost />
+              </Route>
+              <Route path="/search">
+                <Search />
               </Route>
             </TagProvider>
           </PostProvider>
@@ -44,9 +49,6 @@ const ApplicationViews = () => {
 
   return (
     <Switch>
-      {/* <Route path="/" exact>
-        {isLoggedIn ? <Home /> : <Redirect to="/login" />}
-      </Route> */}
       <Route path="/login">
         <Login />
       </Route>

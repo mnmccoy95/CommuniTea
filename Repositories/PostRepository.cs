@@ -87,11 +87,11 @@ namespace CommuniTea.Repositories
         }
 
 
-        public List<PostTag> GetByTagId(int tagId)
+        public List<PostTag> GetByTagName(string name)
         {
             return _context.PostTag
-                .Where(pt => pt.TagId == tagId)
-                .Include(pt => pt.Post)
+                .Where(pt => pt.Tag.Name == name)
+                .Include(pt => pt.Post).ThenInclude(p => p.PostTag).ThenInclude(pt => pt.Tag)
                 .Include(pt => pt.Post.UserProfile)
                 .ToList();
         }

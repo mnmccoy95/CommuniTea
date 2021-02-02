@@ -46,10 +46,10 @@ namespace Tabloid_Fullstack.Controllers
             return Ok(post);
         }
 
-        [HttpGet("getbytag/{tagId}")]
-        public IActionResult GetByTagId(int tagId)
+        [HttpGet("search/{name}")]
+        public IActionResult GetByTagId(string name)
         {
-            var posts = _repo.GetByTagId(tagId);
+            var posts = _repo.GetByTagName(name);
             if (posts == null)
             {
                 return NotFound();

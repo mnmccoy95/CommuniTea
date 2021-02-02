@@ -10,7 +10,7 @@ namespace CommuniTea.Repositories
         void Delete(int id);
         List<PostSummary> Get();
         Post GetById(int id);
-        List<PostTag> GetByTagId(int tagId);
+        List<PostTag> GetByTagName(string name);
         List<PostSummary> GetByUserProfileId(int id);
         void Update(Post post);
     }

@@ -24,6 +24,7 @@ namespace CommuniTea.Repositories
                 .Include(pt => pt.Tag)
                 .OrderBy(pt => pt.Tag.Name).ToList();
         }
+
         public PostTag GetById(int id)
         {
             return _context.PostTag

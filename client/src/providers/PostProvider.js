@@ -39,9 +39,9 @@ export function PostProvider(props) {
     );
   };
 
-  const getPostsByTagId = (id) => {
+  const getPostsByTagName = (name) => {
     getToken().then((token) =>
-      fetch(`${apiUrl}/getbytag/${id}`, {
+      fetch(`${apiUrl}/search/${name}`, {
         method: "GET",
         headers: {
           Authorization: `Bearer ${token}`,
@@ -50,6 +50,10 @@ export function PostProvider(props) {
         .then((res) => res.json())
         .then((res) => {
           const postsToUse = res.map(r => { return r.post })
+          for (const post of postsToUse) {
+            post.authorName = post.userProfile.displayName
+            post.context = post.content
+          }
           setPosts(postsToUse)
         })
     );
@@ -89,7 +93,7 @@ export function PostProvider(props) {
         getPostsByUserId,
         setPosts,
         posts,
-        getPostsByTagId,
+        getPostsByTagName,
         updatePost,
         deletePost
       }}
