@@ -1,12 +1,10 @@
 import React, { useState, createContext, useContext } from "react";
-import { useHistory } from "react-router-dom"
 import { UserProfileContext } from "../providers/UserProfileProvider";
 
 export const PostTagContext = createContext();
 
 export function PostTagProvider(props) {
   const apiUrl = "/api/postTag";
-  const history = useHistory();
 
   const { getToken } = useContext(UserProfileContext);
   const [postTags, setPostTags] = useState([]);

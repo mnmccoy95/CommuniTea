@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext, useEffect } from 'react';
 import PostList from '../components/PostList';
 import { PostContext } from '../providers/PostProvider'
 import { Container, Col, Row } from "reactstrap"

@@ -24,25 +24,12 @@ export function TagProvider(props) {
     );
   };
 
-  const getTagById = (id) => {
-    return getToken().then((token) =>
-      fetch(`${apiUrl}`, {
-        method: "GET",
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      })
-        .then((res) => res.json())
-    );
-  };
-
   return (
     <TagContext.Provider
       value={{
         getTags,
         tags,
-        setTags,
-        getTagById
+        setTags
       }}
     >
       {props.children}

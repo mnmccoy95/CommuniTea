@@ -2,7 +2,6 @@ import React, { useContext, useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 import { QuizContext } from "../providers/QuizProvider"
 import { UserProfileContext } from "../providers/UserProfileProvider"
-import { Form, FormGroup } from "reactstrap"
 import "./Quiz.css"
 import WindowChecker from "../utils/WindowChecker";
 
@@ -19,7 +18,6 @@ const Quiz = () => {
         answers.push(parseInt(id))
       }
     }
-    const answer = { "answers": answers }
 
     return getToken().then((token) =>
       fetch(`/api/userprofile/answer`, {

@@ -1,16 +1,11 @@
 import React, { useContext, useState } from "react";
 import { Card, Button, ButtonGroup, Form, InputGroup, Input, Modal, ModalHeader, ModalBody, ModalFooter } from "reactstrap";
-import { useHistory } from "react-router-dom";
 import TagList from "./TagList"
-import { UserProfileContext } from "../providers/UserProfileProvider"
 import { PostContext } from "../providers/PostProvider"
 import "../pages/Discover.css"
 
 const PostCard = ({ post }) => {
-  const { getCurrentUser } = useContext(UserProfileContext);
   const { updatePost, deletePost } = useContext(PostContext);
-  const user = getCurrentUser();
-  const history = useHistory();
   const [isEditing, setIsEditing] = useState(false);
   const [pendingDelete, setPendingDelete] = useState(false);
   const [postEdits, setPostEdits] = useState("");

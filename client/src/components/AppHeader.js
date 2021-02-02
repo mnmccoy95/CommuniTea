@@ -8,10 +8,6 @@ import {
   Nav,
   NavItem,
   NavLink,
-  NavbarText,
-  Form,
-  Button,
-  Input
 } from 'reactstrap';
 import './AppHeader.css';
 import { UserProfileContext } from "../providers/UserProfileProvider"

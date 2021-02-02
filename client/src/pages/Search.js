@@ -1,12 +1,10 @@
 import React, { useContext, useState } from "react";
-import { useHistory } from "react-router-dom"
 import { Button } from "reactstrap";
 import { PostContext } from "../providers/PostProvider"
 
 const Search = () => {
-  const { posts, getPostsByTagName } = useContext(PostContext);
+  const { getPostsByTagName } = useContext(PostContext);
   const [input, setInput] = useState("");
-  const history = useHistory();
 
   const search = (evt) => {
     evt.preventDefault();
