@@ -30,7 +30,10 @@ const Quiz = () => {
       }).then(resp => resp.json())
         .then((resp) => {
           if (resp.approved === 1) {
-            history.push("/")
+            localStorage.setItem("userProfile", JSON.stringify(resp))
+            history.push("/discover")
+            window.location.reload()
+
           } else {
             logout()
           }
