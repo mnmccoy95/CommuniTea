@@ -3,6 +3,7 @@ import { Card, Button, ButtonGroup, Form, InputGroup, Input, Modal, ModalHeader,
 import TagList from "./TagList"
 import { PostContext } from "../providers/PostProvider"
 import "../pages/Discover.css"
+import InspirationButton from "./InspirationButton"
 
 const PostCard = ({ post }) => {
   const { updatePost, deletePost } = useContext(PostContext);
@@ -52,6 +53,7 @@ const PostCard = ({ post }) => {
       <div>
         <div>
           <p>{post.authorName}</p>
+          <InspirationButton id={post.id} />
         </div>
         <div>
           <img className="postImage" src={post.imageLocation} alt={post.authorName}></img>

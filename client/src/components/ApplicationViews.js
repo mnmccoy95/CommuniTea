@@ -11,6 +11,8 @@ import Discover from '../pages/Discover'
 import NewPost from '../pages/NewPost'
 import { PostTagProvider } from '../providers/PostTagProvider';
 import Search from "../pages/Search"
+import { InspirationProvider } from '../providers/InspirationProvider'
+import Inspiration from '../pages/Inspiration';
 
 const ApplicationViews = () => {
   const { isLoggedIn, getCurrentUser } = useContext(UserProfileContext);
@@ -26,23 +28,30 @@ const ApplicationViews = () => {
         </QuizProvider>)
 
     } else if (user && user.approved === 1) {
-      return (
+      return (<>
         <PostTagProvider>
           <PostProvider>
             <TagProvider>
-              <Route path="/discover">
-                <Search />
-                <Discover />
-              </Route>
-              <Route path="/newpost">
-                <NewPost />
-              </Route>
-              <Route path="/search">
-                <Search />
-              </Route>
+              <InspirationProvider>
+                <Route path="/discover">
+                  <Search />
+                  <Discover />
+                </Route>
+                <Route path="/newpost">
+                  <NewPost />
+                </Route>
+                <Route path="/search">
+                  <Search />
+                </Route>
+                <Route path="/inspiration">
+                  <Inspiration />
+                </Route>
+              </InspirationProvider>
             </TagProvider>
           </PostProvider>
         </PostTagProvider>
+
+      </>
       )
     }
   }

@@ -78,9 +78,9 @@ const Register = () => {
     <div className="login-form">
       <form onSubmit={handleSubmit}>
         <h2 className="text-center">User Register</h2>
-        <div className="form-group">
+        <div className="form-group uploadForm">
           <div className='defaultImageContainer'>
-            <img className='defaultImage' src={localStorage.image ? localStorage.image : 'https://build.dfomer.com/wp-content/uploads/2016/04/dummy-post-horisontal-thegem-blog-default.jpg'} />
+            <img className='defaultImage-register' src={localStorage.image ? localStorage.image : 'https://build.dfomer.com/wp-content/uploads/2016/04/dummy-post-horisontal-thegem-blog-default.jpg'} />
           </div>
 
           {imageLoading ? (
@@ -89,7 +89,7 @@ const Register = () => {
 
 
           <br />
-          <label htmlFor="embedpollfileinput" className="btn btn-info notHidden">
+          <label htmlFor="embedpollfileinput" className="btn btn-info notHidden uploadButton">
             Upload image
           </label>
           <input hidden type="file" onChange={uploadImage} className="inputfile" id="embedpollfileinput" />

@@ -1,8 +1,18 @@
-.defaultImage{
+.defaultImage-register{
   width: 22em;
   height: auto;
 }
 
 .hidden{
   display: none;
+}
+
+.defaultImageContainer {
+  display: flex;
+  justify-content: center;
+}
+
+.uploadButton {
+  width: 10em;
+  align-self: center;
 }

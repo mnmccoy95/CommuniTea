@@ -82,7 +82,7 @@ const AppHeader = () => {
                   </NavLink>
                 </NavItem>
                 <NavItem>
-                  <NavLink>
+                  <NavLink to="/inspiration" tag={Link}>
                     Inspiration
                   </NavLink>
                 </NavItem>
