@@ -61,11 +61,16 @@ namespace CommuniTea.Controllers
                 return BadRequest();
             }
 
+            if(answers.Length < 10)
+            {
+                return BadRequest();
+            }
+
             var answerList = _answerRepo.Get();
             int acceptance = 1;
-            foreach(int id in answers)
+            foreach(Answer a in answerList)
             {
-                foreach(Answer a in answerList)
+                foreach(int id in answers)
                 {
                     if(a.Id == id && a.Correct == false)
                     {

@@ -18,15 +18,22 @@ namespace CommuniTea.Controllers
     public class TagController : ControllerBase
     {
         private ITagRepository _tagRepo;
+        private IUserProfileRepository _userProfileRepo;
 
-        public TagController(ITagRepository tagRepo)
+        public TagController(ITagRepository tagRepo, IUserProfileRepository userProfileRepo)
         {
             _tagRepo = tagRepo;
+            _userProfileRepo = userProfileRepo;
         }
 
         [HttpGet]
         public IActionResult Get()
         {
+            if (GetCurrentUserProfile().Approved != 1)
+            {
+                return BadRequest();
+            }
+
             var tags = _tagRepo.Get();
             return Ok(tags);
         }
@@ -34,6 +41,11 @@ namespace CommuniTea.Controllers
         [HttpGet("{id}")]
         public IActionResult GetById(int id)
         {
+            if (GetCurrentUserProfile().Approved != 1)
+            {
+                return BadRequest();
+            }
+
             var tag = _tagRepo.GetById(id);
             return Ok(tag);
         }
@@ -41,15 +53,19 @@ namespace CommuniTea.Controllers
         [HttpGet("{name}")]
         public IActionResult GetByName(string name)
         {
+            if (GetCurrentUserProfile().Approved != 1)
+            {
+                return BadRequest();
+            }
+
             var tag = _tagRepo.GetByName(name);
             return Ok(tag);
         }
 
-        [HttpPost]
-        public IActionResult Post(Tag tag)
+        private UserProfile GetCurrentUserProfile()
         {
-            _tagRepo.Add(tag);
-            return CreatedAtAction("Get", new { id = tag.Id }, tag);
+            var firebaseUserId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
+            return _userProfileRepo.GetByFirebaseUserId(firebaseUserId);
         }
 
     }

@@ -28,6 +28,12 @@ namespace CommuniTea.Controllers
         public IActionResult GetUserInsp(int id)
         {
             var insp = _repo.GetInspirationsByUserId(id);
+
+            if (GetCurrentUserProfile().Approved != 1)
+            {
+                return BadRequest();
+            }
+
             if (insp == null)
             {
                 return NoContent();
@@ -43,6 +49,11 @@ namespace CommuniTea.Controllers
         {
             var currentUser = GetCurrentUserProfile();
 
+            if (currentUser.Approved != 1)
+            {
+                return BadRequest();
+            }
+
             inspiration.UserProfileId = currentUser.Id;
 
             _repo.Add(inspiration);
@@ -53,6 +64,11 @@ namespace CommuniTea.Controllers
         public IActionResult Delete(int id)
         {
             var user = GetCurrentUserProfile();
+            if (user.Approved != 1)
+            {
+                return BadRequest();
+            }
+
             var inspToDelete = _repo.GetByPostAndUser(id, user.Id);
 
             if (inspToDelete.UserProfileId != user.Id)

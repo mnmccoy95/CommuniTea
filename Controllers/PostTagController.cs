@@ -34,6 +34,10 @@ namespace CommuniTea.Controllers
         [HttpGet]
         public IActionResult Get()
         {
+            if (GetCurrentUserProfile().Approved != 1)
+            {
+                return BadRequest();
+            }
             var postTags = _postTagRepo.GetAll();
             return Ok(postTags);
         }
@@ -41,6 +45,11 @@ namespace CommuniTea.Controllers
         [HttpGet("{id}")]
         public IActionResult GetById(int id)
         {
+            if (GetCurrentUserProfile().Approved != 1)
+            {
+                return BadRequest();
+            }
+
             var postTags = _postTagRepo.GetByPostId(id);
             if (postTags == null)
             {
@@ -53,6 +62,11 @@ namespace CommuniTea.Controllers
         public IActionResult Post(PostTag postTag)
         {
             var currentUser = GetCurrentUserProfile();
+            if (currentUser.Approved != 1)
+            {
+                return BadRequest();
+            }
+
             var postUserId = _postRepo.GetById(postTag.PostId);
 
             if (currentUser.Id != postUserId.UserProfileId)
@@ -68,6 +82,11 @@ namespace CommuniTea.Controllers
         public IActionResult Delete(int id)
         {
             var currentUser = GetCurrentUserProfile();
+            if (currentUser.Approved != 1)
+            {
+                return BadRequest();
+            }
+
             var postUserId = _postTagRepo.GetById(id).Post.UserProfileId;
 
             if (currentUser.Id != postUserId)

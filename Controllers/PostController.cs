@@ -30,6 +30,11 @@ namespace Tabloid_Fullstack.Controllers
         [HttpGet]
         public IActionResult Get()
         {
+            if (GetCurrentUserProfile().Approved != 1)
+            {
+                return BadRequest();
+            }
+
             var posts = _repo.Get();
             return Ok(posts);
         }
@@ -37,6 +42,10 @@ namespace Tabloid_Fullstack.Controllers
         [HttpGet("{id}")]
         public IActionResult GetById(int id)
         {
+            if (GetCurrentUserProfile().Approved != 1)
+            {
+                return BadRequest();
+            }
             var post = _repo.GetById(id);
             if (post == null)
             {
@@ -49,6 +58,11 @@ namespace Tabloid_Fullstack.Controllers
         [HttpGet("search/{name}")]
         public IActionResult GetByTagId(string name)
         {
+            if (GetCurrentUserProfile().Approved != 1)
+            {
+                return BadRequest();
+            }
+
             var posts = _repo.GetByTagName(name);
             if (posts == null)
             {
@@ -61,6 +75,11 @@ namespace Tabloid_Fullstack.Controllers
         [HttpGet("getbyuser/{id}")]
         public IActionResult GetByUser(int id)
         {
+            if (GetCurrentUserProfile().Approved != 1)
+            {
+                return BadRequest();
+            }
+
             var posts = _repo.GetByUserProfileId(id);
             return Ok(posts);
         }
@@ -68,7 +87,17 @@ namespace Tabloid_Fullstack.Controllers
         [HttpPost]
         public IActionResult Post(Post post)
         {
+
+            if (GetCurrentUserProfile().Approved != 1)
+            {
+                return BadRequest();
+            }
+
             var currentUser = GetCurrentUserProfile();
+            if (currentUser.Approved != 1)
+            {
+                return BadRequest();
+            }
 
             post.UserProfileId = currentUser.Id;
 
@@ -79,7 +108,12 @@ namespace Tabloid_Fullstack.Controllers
         [HttpDelete("{id}")]
         public IActionResult Delete(int id)
         {
+
             var user = GetCurrentUserProfile();
+            if (user.Approved != 1)
+            {
+                return BadRequest();
+            }
             var postToDelete = _repo.GetById(id);
 
             if (postToDelete.UserProfileId != user.Id)
@@ -100,6 +134,10 @@ namespace Tabloid_Fullstack.Controllers
             }
 
             var user = GetCurrentUserProfile();
+            if (user.Approved != 1)
+            {
+                return BadRequest();
+            }
 
             if (user.Id != postSummary.AuthorId)
             {
