@@ -2,7 +2,7 @@ import React from "react"
 
 const TagCard = ({ tag }) => {
   return (
-    <div class="tagCard btn">{tag.name}</div>
+    <div className="tagCard btn">{tag.name}</div>
   )
 }
 

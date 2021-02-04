@@ -4,7 +4,6 @@ import { InspirationContext } from "../providers/InspirationProvider";
 import { UserProfileContext } from "../providers/UserProfileProvider"
 import "./PostCard.css"
 
-
 const InspirationButton = ({ id }) => {
   const { inspiration, getInspirationByUser, addInspiration, deleteInspiration } = useContext(InspirationContext);
   const { getCurrentUser } = useContext(UserProfileContext);
@@ -31,9 +30,9 @@ const InspirationButton = ({ id }) => {
   const inspChecker = () => {
     const inspExist = inspiration.map((i) => { return i.id });
     if (inspExist.includes(id)) {
-      return (<button id={id} onClick={(e) => { deleteInsp(e) }} class="btn btn-secondary"><i class="fas fa-heart"></i></button>)
+      return (<button id={id} onClick={(e) => { deleteInsp(e) }} className="removeInsp btn btn-lg"><i id={id} className="fas fa-heart fa-2x"></i></button>)
     } else {
-      return (<button id={id} onClick={(e) => { addInsp(e) }} class="btn btn-danger"><i class="fas fa-heart"></i></button>)
+      return (<button id={id} onClick={(e) => { addInsp(e) }} className="addInsp btn btn-lg"><i id={id} className="fas fa-heart fa-2x"></i></button>)
     }
   }
 

@@ -4,7 +4,9 @@ import TagList from "./TagList"
 import { PostContext } from "../providers/PostProvider"
 import "../pages/Discover.css"
 import InspirationButton from "./InspirationButton"
+import RemoveInspBtn from "./RemoveInspBtn"
 import "./PostCard.css"
+
 
 const PostCard = ({ post }) => {
   const { updatePost, deletePost } = useContext(PostContext);
@@ -32,11 +34,11 @@ const PostCard = ({ post }) => {
       return (
         <>
           <ButtonGroup size="sm">
-            <Button className="btn btn-primary" onClick={showEditForm}>
+            <Button className="btn btn-primary ownerBtns pinkBtn" onClick={showEditForm}>
               Edit
             </Button>
             <Button
-              className="btn btn-danger"
+              className="btn dangerBtn ownerBtns"
               onClick={(e) => setPendingDelete(true)}
             >
               Delete
@@ -46,6 +48,14 @@ const PostCard = ({ post }) => {
       )
     } else {
       return null
+    }
+  }
+
+  const inspChecker = () => {
+    if (window.location.href.includes("inspiration")) {
+      return (<RemoveInspBtn id={post.id} />)
+    } else {
+      return (<InspirationButton id={post.id} />)
     }
   }
 
@@ -60,19 +70,26 @@ const PostCard = ({ post }) => {
       </div>
       <div className="context-container">
         {isEditing ? (
-          <Form className="w-100">
+          <Form className="w-100 h-100">
             <InputGroup>
               <Input
+                rows="10"
+                columns="60"
+                type="textarea"
+                className="postTextEdit"
                 onChange={(e) => setPostEdits(e.target.value)}
                 value={postEdits}
               />
               <ButtonGroup size="sm">
-                <Button onClick={(e) => {
-                  createEditPost();
-                  updatePost(post)
-                  hideEditForm()
-                }}>Save</Button>
-                <Button outline color="danger" onClick={hideEditForm}>
+                <Button
+                  type="button"
+                  className="ownerBtns pinkBtn"
+                  onClick={(e) => {
+                    createEditPost();
+                    updatePost(post)
+                    hideEditForm()
+                  }}>Save</Button>
+                <Button className="ownerBtns cancelBtn" onClick={hideEditForm}>
                   Cancel
               </Button>
               </ButtonGroup>
@@ -80,18 +97,14 @@ const PostCard = ({ post }) => {
           </Form>
         ) : (
             <>
-
               <p className="postText">{post.context}</p>
-              <i class="fas fa-heart"></i>
-
               {EditButton()}
-
             </>
           )}
       </div>
       <div className="postFooter">
         <TagList tags={post.postTag} />
-        <InspirationButton id={post.id} />
+        {inspChecker()}
       </div>
       {/* DELETE CONFIRM MODAL */}
       <Modal isOpen={pendingDelete}>
@@ -101,8 +114,8 @@ const PostCard = ({ post }) => {
           undone.
         </ModalBody>
         <ModalFooter>
-          <Button onClick={(e) => setPendingDelete(false)}>No, Cancel</Button>
-          <Button className="btn btn-outline-danger" onClick={(e) => {
+          <Button className="cancelBtn" onClick={(e) => setPendingDelete(false)}>No, Cancel</Button>
+          <Button className="btn dangerBtn" onClick={(e) => {
             deletePost(post)
             setPendingDelete(false);
             Modal.isOpen = { pendingDelete }

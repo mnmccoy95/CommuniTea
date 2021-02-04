@@ -26,7 +26,7 @@ const Register = () => {
     data.append('file', files[0])
     data.append('upload_preset', 'vugr9ics')
     const res = await fetch(
-      'https://api.cloudinary.com/v1_1/dddadzenw/image/upload',
+      'https://api.cloudinary.com/v1_1/dddadzenw/image/upload/',
       {
         method: "POST",
         body: data
@@ -75,9 +75,9 @@ const Register = () => {
   };
 
   return (
-    <div className="login-form">
-      <form onSubmit={handleSubmit}>
-        <h2 className="text-center">User Register</h2>
+    <div className="login-form new-post-form-container">
+      <form onSubmit={handleSubmit} className="new-post-form-area">
+        <h2 className="text-center">Register</h2>
         <div className="form-group uploadForm">
           <div className='defaultImageContainer'>
             <img className='defaultImage-register' src={localStorage.image ? localStorage.image : 'https://build.dfomer.com/wp-content/uploads/2016/04/dummy-post-horisontal-thegem-blog-default.jpg'} />
@@ -89,7 +89,7 @@ const Register = () => {
 
 
           <br />
-          <label htmlFor="embedpollfileinput" className="btn btn-info notHidden uploadButton">
+          <label htmlFor="embedpollfileinput" className="btn dangerBtn notHidden uploadButton">
             Upload image
           </label>
           <input hidden type="file" onChange={uploadImage} className="inputfile" id="embedpollfileinput" />
@@ -116,26 +116,6 @@ const Register = () => {
         </div>
         <div className="form-group hidden">
           <Input
-            onChange={(e) => setPronouns(e.target.value)}
-            type="text"
-            className="form-control"
-            name="pronouns"
-            placeholder="Pronouns"
-            required="required"
-          />
-        </div>
-        <div className="form-group hidden">
-          <Input
-            onChange={(e) => setBio(e.target.value)}
-            type="text"
-            className="form-control"
-            name="bio"
-            placeholder="Bio"
-            required="required"
-          />
-        </div>
-        <div className="form-group hidden">
-          <Input
             onChange={(e) => setPassword(e.target.value)}
             type="password"
             className="form-control"
@@ -155,7 +135,28 @@ const Register = () => {
           />
         </div>
         <div className="form-group hidden">
-          <Button type="submit" block color="danger" disabled={loading}>
+          <Input
+            onChange={(e) => setPronouns(e.target.value)}
+            type="text"
+            className="form-control"
+            name="pronouns"
+            placeholder="Pronouns"
+            required="required"
+          />
+        </div>
+        <div className="form-group hidden">
+          <Input
+            onChange={(e) => setBio(e.target.value)}
+            type="textarea"
+            className="form-control"
+            name="bio"
+            rows="5"
+            placeholder="Bio"
+            required="required"
+          />
+        </div>
+        <div className="form-group hidden submitContainer">
+          <Button type="submit" className="dangerBtn btn" disabled={loading}>
             Sign Up
           </Button>
         </div>

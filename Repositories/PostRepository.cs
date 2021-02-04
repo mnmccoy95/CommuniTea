@@ -33,7 +33,7 @@ namespace CommuniTea.Repositories
                     Context = p.Content,
                     PostTag = p.PostTag
 
-                }).ToList();
+                }).OrderByDescending(p => p.Id).ToList();
         }
 
         public Post GetById(int id)
@@ -62,6 +62,14 @@ namespace CommuniTea.Repositories
             var post = GetById(id);
 
             var tags = post.PostTag;
+
+            var insp = _context.Inspiration.Where(i => i.PostId == id).ToList();
+
+            foreach(Inspiration i in insp)
+            {
+                _context.Inspiration.Remove(i);
+            }
+            
             foreach (PostTag tag in tags)
             {
                 _context.PostTag.Remove(tag);

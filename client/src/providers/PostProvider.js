@@ -53,6 +53,7 @@ export function PostProvider(props) {
           for (const post of postsToUse) {
             post.authorName = post.userProfile.displayName
             post.context = post.content
+            post.authorImg = post.userProfile.imageLocation
           }
           setPosts(postsToUse)
         })

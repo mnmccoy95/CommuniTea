@@ -29,11 +29,9 @@ const Login = () => {
   };
 
   return (
-    <div className="login-form">
-      <form onSubmit={handleSubmit}>
-        <div className="avatar bg-primary">
-        </div>
-        <h2 className="text-center">User Login</h2>
+    <div className="login-form new-post-form-container" >
+      <form onSubmit={handleSubmit} className="new-post-form-area">
+        <h2 className="text-center">Login</h2>
         <div className="form-group">
           <Input
             onChange={(e) => setEmail(e.target.value)}
@@ -54,8 +52,8 @@ const Login = () => {
             required="required"
           />
         </div>
-        <div className="form-group">
-          <Button type="submit" block color="danger" disabled={loading}>
+        <div className="form-group submitContainer">
+          <Button type="submit" className="dangerBtn btn" disabled={loading}>
             Sign in
           </Button>
         </div>

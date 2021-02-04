@@ -5,7 +5,7 @@ import { useHistory } from "react-router-dom";
 import WindowChecker from "../utils/WindowChecker";
 import "./NewPost.css"
 import { Typeahead } from 'react-bootstrap-typeahead';
-import { FormGroup } from "reactstrap"
+import { FormGroup, Input } from "reactstrap"
 import 'react-bootstrap-typeahead/css/Typeahead.css';
 import { PostTagContext } from "../providers/PostTagProvider"
 
@@ -29,7 +29,7 @@ const NewPost = () => {
     setImageLoading(true)
     const data = new FormData()
     data.append('file', files[0])
-    data.append('upload_preset', 'vugr9ics')
+    data.append('upload_preset', 'z0vejl5n')
     const res = await fetch(
       'https://api.cloudinary.com/v1_1/dddadzenw/image/upload',
       {
@@ -44,7 +44,7 @@ const NewPost = () => {
     setImageLoading(false)
     const matches = document.querySelectorAll(".hidden");
     for (const m of matches) {
-      m.style.display = "block"
+      m.style.display = "inline-block"
     }
     document.querySelector(".notHidden").style.display = "none"
   }
@@ -111,21 +111,23 @@ const NewPost = () => {
                 <h6 className="loadingImage">Loading...</h6>
               ) : <></>}
               <br />
-              <label htmlFor="embedpollfileinput" className="btn btn-info notHidden uploadButton">
+              <label htmlFor="embedpollfileinput" className="btn btn-info notHidden uploadButton dangerBtn">
                 Upload image
               </label>
               <input hidden type="file" onChange={uploadImage} className="inputfile" id="embedpollfileinput" />
             </div>
           </fieldset>
           <fieldset>
-            <div className="form-group hidden">
-              <label className="new-post-label" htmlFor="newBody"></label>
-              <input type="textarea" className="newBody" id="content" name="content" placeholder="Tell us more!" onChange={(e) => { handleControlledInputChange(e) }} required autoFocus />
+            <div className="form-group hidden w-100 h-100">
+              <FormGroup>
+                <label className="new-post-label" htmlFor="newBody"></label>
+                <Input type="textarea" rows="10" className="newBody w-100 h-100" id="content" name="content" placeholder="Tell us more!" onChange={(e) => { handleControlledInputChange(e) }} required autoFocus />
+              </FormGroup>
             </div>
           </fieldset>
           <fieldset>
-            <div className="form-group hidden">
-              <FormGroup style={{ marginTop: '20px' }}>
+            <div className="form-group hidden w-100 h-100">
+              <FormGroup>
                 <Typeahead
                   id="basic-typeahead-multiple"
                   labelKey="name"
@@ -138,8 +140,8 @@ const NewPost = () => {
               </FormGroup>
             </div>
           </fieldset>
-          <fieldset className="hidden">
-            <button className="submitNewPostBtn hidden btn btn-success" type="submit" > Submit Post </button>
+          <fieldset className="hidden submitContainer">
+            <button className="submitNewPostBtn hidden btn dangerBtn" type="submit" > Submit Post </button>
           </fieldset>
         </form>
       </div>

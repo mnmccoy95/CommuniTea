@@ -14,22 +14,18 @@ const Inspiration = () => {
 
   const InspChecker = () => {
     if (inspiration) {
-      return (<PostList posts={inspiration} />)
+      return (<div className="postList">
+        <PostList posts={inspiration} />
+      </div>)
     } else {
       return (<p>You have no saved inspiration!</p>)
     }
   }
 
   return (
-    <>
-      <Container>
-        <Row>
-          <Col>
-            <InspChecker />
-          </Col>
-        </Row>
-      </Container>
-    </>
+
+    <InspChecker />
+
   );
 };
 

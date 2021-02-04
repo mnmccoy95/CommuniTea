@@ -18,13 +18,14 @@ const Search = () => {
 
   return (
     <form>
-      <fieldset>
+      <fieldset className="searchForm">
         <input type="text" required
+          className="searchBar"
           onChange={(event) => setInput(event.target.value)}
           value={input}
           placeholder="Search" />
 
-        <Button type="submit" onClick={(e) => { search(e) }}>
+        <Button className="dangerBtn" type="submit" onClick={(e) => { search(e) }}>
           Search
         </Button>
       </fieldset>
