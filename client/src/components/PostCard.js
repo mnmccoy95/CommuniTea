@@ -4,6 +4,7 @@ import TagList from "./TagList"
 import { PostContext } from "../providers/PostProvider"
 import "../pages/Discover.css"
 import InspirationButton from "./InspirationButton"
+import "./PostCard.css"
 
 const PostCard = ({ post }) => {
   const { updatePost, deletePost } = useContext(PostContext);
@@ -49,46 +50,48 @@ const PostCard = ({ post }) => {
   }
 
   return (
-    <Card>
+    <Card className="col postContainer">
+      <div className="postHeader">
+        <img className="userImage" src={post.authorImg} alt={post.authorName}></img>
+        <p className="userName">{post.authorName}</p>
+      </div>
       <div>
-        <div>
-          <p>{post.authorName}</p>
-          <InspirationButton id={post.id} />
-        </div>
-        <div>
-          <img className="postImage" src={post.imageLocation} alt={post.authorName}></img>
-        </div>
-        <div>
-          {isEditing ? (
-            <Form className="w-100">
-              <InputGroup>
-                <Input
-                  bsSize="sm"
-                  onChange={(e) => setPostEdits(e.target.value)}
-                  value={postEdits}
-                />
-                <ButtonGroup size="sm">
-                  <Button onClick={(e) => {
-                    createEditPost();
-                    updatePost(post)
-                    hideEditForm()
-                  }}>Save</Button>
-                  <Button outline color="danger" onClick={hideEditForm}>
-                    Cancel
+        <img className="postImage" src={post.imageLocation} alt={post.authorName}></img>
+      </div>
+      <div className="context-container">
+        {isEditing ? (
+          <Form className="w-100">
+            <InputGroup>
+              <Input
+                onChange={(e) => setPostEdits(e.target.value)}
+                value={postEdits}
+              />
+              <ButtonGroup size="sm">
+                <Button onClick={(e) => {
+                  createEditPost();
+                  updatePost(post)
+                  hideEditForm()
+                }}>Save</Button>
+                <Button outline color="danger" onClick={hideEditForm}>
+                  Cancel
               </Button>
-                </ButtonGroup>
-              </InputGroup>
-            </Form>
-          ) : (
-              <>
-                {post.context}
-                {EditButton()}
-              </>
-            )}
-        </div>
-        <div>
-          <TagList tags={post.postTag} />
-        </div>
+              </ButtonGroup>
+            </InputGroup>
+          </Form>
+        ) : (
+            <>
+
+              <p className="postText">{post.context}</p>
+              <i class="fas fa-heart"></i>
+
+              {EditButton()}
+
+            </>
+          )}
+      </div>
+      <div className="postFooter">
+        <TagList tags={post.postTag} />
+        <InspirationButton id={post.id} />
       </div>
       {/* DELETE CONFIRM MODAL */}
       <Modal isOpen={pendingDelete}>

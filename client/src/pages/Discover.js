@@ -14,13 +14,9 @@ const Explore = () => {
 
   return (
     <>
-      <Container>
-        <Row>
-          <Col>
-            <PostList posts={posts} />
-          </Col>
-        </Row>
-      </Container>
+      <div className="postList">
+        <PostList posts={posts} />
+      </div>
     </>
   );
 };

@@ -29,6 +29,7 @@ namespace CommuniTea.Repositories
                     ImageLocation = p.ImageLocation,
                     AuthorId = p.UserProfileId,
                     AuthorName = p.UserProfile.DisplayName,
+                    AuthorImg = p.UserProfile.ImageLocation,
                     Context = p.Content,
                     PostTag = p.PostTag
 
@@ -81,6 +82,7 @@ namespace CommuniTea.Repositories
                     ImageLocation = p.ImageLocation,
                     AuthorId = p.UserProfileId,
                     AuthorName = p.UserProfile.DisplayName,
+                    AuthorImg = p.UserProfile.ImageLocation,
                     Context = p.Content
                 })
                 .ToList();

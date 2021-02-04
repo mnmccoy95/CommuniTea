@@ -4,7 +4,7 @@ import TagCard from "./TagCard"
 const TagList = ({ tags }) => {
 
   return (
-    <div>
+    <div className="tagList">
       {tags.map((tag) => (
         <div key={tag.id}>
           <TagCard tag={tag.tag} />

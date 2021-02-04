@@ -1,0 +1,64 @@
+.userImage {
+  width: 3em;
+  height: auto;
+}
+
+.postHeader{
+  max-height: 4em;
+  display: flex;
+  flex-direction: row;
+  border-bottom:1px gray solid;
+}
+
+@media screen and (min-width: 800px){
+  .postContainer {
+      width: 40%;
+      height: auto;
+  }
+  .postCard {
+      width: 40%;
+      height: auto;
+  }
+}
+
+.postCard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.postFooter{
+  display:flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.tagList {
+  display:flex;
+  flex-direction: row;
+}
+
+.tagCard {
+  background-color: pink!important;
+  border-color: pink!important;
+  color: white!important;
+}
+
+.tagCard:hover {
+  color: white;
+  background-color: rgb(255, 152, 152)!important;
+  border-color: rgb(255, 152, 152)!important;
+}
+
+.context-container {
+  margin-top: 1em;
+  margin-bottom: 1em;
+  display: flex;
+  flex-direction: row;
+  flex-wrap:wrap;
+  justify-content: space-between;
+}
+
+.postText {
+  padding-left: 1em;
+}

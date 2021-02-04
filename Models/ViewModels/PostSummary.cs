@@ -12,6 +12,7 @@ namespace CommuniTea.Models.ViewModels
         public string Context { get; set; }
         public int AuthorId { get; set; }
         public string AuthorName { get; set; }
+        public string AuthorImg { get; set; }
         public List<PostTag> PostTag { get; set; }
     }
 }

@@ -3,13 +3,13 @@ import PostCard from "./PostCard";
 
 const PostList = ({ posts }) => {
   return (
-    <div>
+    <>
       {posts.map((post) => (
-        <div key={post.id}>
+        <div className="postCard" key={post.id}>
           <PostCard post={post} />
         </div>
       ))}
-    </div>
+    </>
   );
 };
 

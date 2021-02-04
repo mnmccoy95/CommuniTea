@@ -29,6 +29,7 @@ namespace CommuniTea.Repositories
                     ImageLocation = i.Post.ImageLocation,
                     AuthorId = i.Post.UserProfileId,
                     AuthorName = i.Post.UserProfile.DisplayName,
+                    AuthorImg = i.Post.UserProfile.ImageLocation,
                     Context = i.Post.Content,
                     PostTag = i.Post.PostTag
                 })
