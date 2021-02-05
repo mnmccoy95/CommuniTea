@@ -7,6 +7,7 @@ import InspirationButton from "./InspirationButton"
 import RemoveInspBtn from "./RemoveInspBtn"
 import "./PostCard.css"
 import SubscriptionButton from "./SubscriptionBtn"
+import RemoveSubBtn from "./RemoveSubBtn"
 
 
 const PostCard = ({ post }) => {
@@ -60,6 +61,14 @@ const PostCard = ({ post }) => {
     }
   }
 
+  const subChecker = () => {
+    if (!window.location.href.includes("discover") && !window.location.href.includes("inspiration")) {
+      return (<RemoveSubBtn post={post} />)
+    } else {
+      return (<SubscriptionButton post={post} />)
+    }
+  }
+
   return (
     <Card className="col postContainer">
       <div className="postHeader">
@@ -67,7 +76,7 @@ const PostCard = ({ post }) => {
           <img className="userImage" src={post.authorImg} alt={post.authorName}></img>
           <p className="userName">{post.authorName}</p>
         </div>
-        <SubscriptionButton post={post} />
+        {subChecker()}
       </div>
       <div>
         <img className="postImage" src={post.imageLocation} alt={post.authorName}></img>
