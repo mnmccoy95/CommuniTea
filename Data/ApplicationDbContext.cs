@@ -18,5 +18,13 @@ namespace CommuniTea.Data
         public DbSet<Answer> Answer { get; set; }
         public DbSet<QuestionType> QuestionType { get; set; }
         public DbSet<Inspiration> Inspiration { get; set; }
+        public DbSet<Sub> Subs { get; set; }
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Sub>()
+                .HasOne(s => s.SubscriberUserProfile)
+                .WithMany(up => up.Sub)
+                .HasForeignKey(s => s.SubscriberUserProfileId);
+        }
     }
 }

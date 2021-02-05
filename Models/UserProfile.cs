@@ -17,5 +17,6 @@ namespace CommuniTea.Models
         public int Approved { get; set; }
         public List<Post> Post { get; set; }
         public List<Inspiration> Inspiration { get; set; }
+        public List<Sub> Sub { get; set; }
     }
 }

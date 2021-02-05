@@ -13,6 +13,8 @@ import { PostTagProvider } from '../providers/PostTagProvider';
 import Search from "../pages/Search"
 import { InspirationProvider } from '../providers/InspirationProvider'
 import Inspiration from '../pages/Inspiration';
+import Home from '../pages/Home'
+import { SubProvider } from '../providers/SubProvider'
 
 const ApplicationViews = () => {
   const { isLoggedIn, getCurrentUser } = useContext(UserProfileContext);
@@ -33,19 +35,24 @@ const ApplicationViews = () => {
           <PostProvider>
             <TagProvider>
               <InspirationProvider>
-                <Route path="/discover">
-                  <Search />
-                  <Discover />
-                </Route>
-                <Route path="/newpost">
-                  <NewPost />
-                </Route>
-                <Route path="/search">
-                  <Search />
-                </Route>
-                <Route path="/inspiration">
-                  <Inspiration />
-                </Route>
+                <SubProvider>
+                  <Route path="/discover">
+                    <Search />
+                    <Discover />
+                  </Route>
+                  <Route path="/newpost">
+                    <NewPost />
+                  </Route>
+                  <Route path="/search">
+                    <Search />
+                  </Route>
+                  <Route path="/inspiration">
+                    <Inspiration />
+                  </Route>
+                  <Route path="/" exact>
+                    <Home />
+                  </Route>
+                </SubProvider>
               </InspirationProvider>
             </TagProvider>
           </PostProvider>

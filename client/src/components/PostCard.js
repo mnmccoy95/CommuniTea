@@ -6,6 +6,7 @@ import "../pages/Discover.css"
 import InspirationButton from "./InspirationButton"
 import RemoveInspBtn from "./RemoveInspBtn"
 import "./PostCard.css"
+import SubscriptionButton from "./SubscriptionBtn"
 
 
 const PostCard = ({ post }) => {
@@ -62,8 +63,11 @@ const PostCard = ({ post }) => {
   return (
     <Card className="col postContainer">
       <div className="postHeader">
-        <img className="userImage" src={post.authorImg} alt={post.authorName}></img>
-        <p className="userName">{post.authorName}</p>
+        <div className="postInfo">
+          <img className="userImage" src={post.authorImg} alt={post.authorName}></img>
+          <p className="userName">{post.authorName}</p>
+        </div>
+        <SubscriptionButton post={post} />
       </div>
       <div>
         <img className="postImage" src={post.imageLocation} alt={post.authorName}></img>

@@ -1,7 +1,6 @@
 import React, { useContext, useEffect } from 'react';
 import PostList from '../components/PostList';
 import { PostContext } from '../providers/PostProvider'
-import { Container, Col, Row } from "reactstrap"
 import WindowChecker from '../utils/WindowChecker';
 
 const Explore = () => {
