@@ -1,5 +1,6 @@
 import React, { useContext, useState } from "react";
 import { Card, Button, ButtonGroup, Form, InputGroup, Input, Modal, ModalHeader, ModalBody, ModalFooter } from "reactstrap";
+import { Link } from "react-router-dom"
 import TagList from "./TagList"
 import { PostContext } from "../providers/PostProvider"
 import "../pages/Discover.css"
@@ -74,7 +75,7 @@ const PostCard = ({ post }) => {
       <div className="postHeader">
         <div className="postInfo">
           <img className="userImage" src={post.authorImg} alt={post.authorName}></img>
-          <p className="userName">{post.authorName}</p>
+          <Link to={`/profile/${post.authorId}`} className="userName">{post.authorName}</Link>
         </div>
         {subChecker()}
       </div>

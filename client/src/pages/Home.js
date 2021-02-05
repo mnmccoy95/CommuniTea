@@ -9,6 +9,7 @@ const Subscriptions = () => {
   const { subs, getSubsByUser } = useContext(SubContext);
 
   useEffect(() => {
+    window.scrollTo(0, 0)
     WindowChecker()
     getSubsByUser()
   }, []);

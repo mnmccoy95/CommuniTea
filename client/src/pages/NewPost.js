@@ -71,7 +71,7 @@ const NewPost = () => {
             addPostTag(postTag)
           }
         })
-        .then((data) => history.push(`/`))
+        .then((data) => history.push(`/discover`))
         .then(localStorage.removeItem("image"))
     })
   }

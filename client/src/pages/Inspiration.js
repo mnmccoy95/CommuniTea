@@ -8,6 +8,7 @@ const Inspiration = () => {
   const { inspiration, getInspirationByUser } = useContext(InspirationContext);
 
   useEffect(() => {
+    window.scrollTo(0, 0)
     WindowChecker()
     getInspirationByUser();
   }, []);

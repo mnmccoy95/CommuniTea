@@ -37,28 +37,18 @@ const ApplicationViews = () => {
             <TagProvider>
               <InspirationProvider>
                 <SubProvider>
-                  <Route path="/discover">
-                    <Discover />
-                  </Route>
                   <Route path="/newpost">
                     <NewPost />
                   </Route>
-                  <Route path="/search">
-                    <Search />
-                  </Route>
-                  <Route path="/inspiration">
-                    <Inspiration />
-                  </Route>
+
                   <Route path="/" exact>
                     <Home />
                   </Route>
-
                 </SubProvider>
               </InspirationProvider>
             </TagProvider>
           </PostProvider>
         </PostTagProvider>
-
 
         <PostTagProvider>
           <PostProvider>
@@ -67,6 +57,32 @@ const ApplicationViews = () => {
                 <SubProvider>
                   <Route path="/profile/:id">
                     <Profile />
+                  </Route>
+                </SubProvider>
+              </InspirationProvider>
+            </TagProvider>
+          </PostProvider>
+        </PostTagProvider>
+        <PostTagProvider>
+          <PostProvider>
+            <TagProvider>
+              <InspirationProvider>
+                <SubProvider>
+                  <Route path="/discover">
+                    <Discover />
+                  </Route>
+                </SubProvider>
+              </InspirationProvider>
+            </TagProvider>
+          </PostProvider>
+        </PostTagProvider>
+        <PostTagProvider>
+          <PostProvider>
+            <TagProvider>
+              <InspirationProvider>
+                <SubProvider>
+                  <Route path="/inspiration">
+                    <Inspiration />
                   </Route>
                 </SubProvider>
               </InspirationProvider>

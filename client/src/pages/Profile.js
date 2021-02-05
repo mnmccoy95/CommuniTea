@@ -7,15 +7,14 @@ import WindowChecker from '../utils/WindowChecker';
 const Profile = () => {
   const { posts, getPostsByUserId } = useContext(PostContext);
   const { id } = useParams();
-  console.log(id)
 
   useEffect(() => {
+    window.scrollTo(0, 0)
     WindowChecker()
     getPostsByUserId(id)
   }, []);
 
   const PostChecker = () => {
-    console.log(posts)
     if (posts.length > 0) {
       return (<div className="postList">
         <PostList posts={posts} />

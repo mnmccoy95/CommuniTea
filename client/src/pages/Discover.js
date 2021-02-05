@@ -8,6 +8,7 @@ const Explore = () => {
   const { posts, getAllPosts } = useContext(PostContext);
 
   useEffect(() => {
+    window.scrollTo(0, 0)
     WindowChecker()
     getAllPosts();
   }, []);

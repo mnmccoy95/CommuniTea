@@ -8,6 +8,8 @@ export function PostProvider(props) {
 
   const { getToken } = useContext(UserProfileContext);
   const [posts, setPosts] = useState([]);
+  const user = parseInt(JSON.parse(localStorage.getItem('userProfile')).id);
+
 
   const getAllPosts = () => {
     getToken().then((token) =>
@@ -71,7 +73,6 @@ export function PostProvider(props) {
         },
         body: JSON.stringify(post)
       })
-        .then(getAllPosts)
     })
   }
 
@@ -82,8 +83,13 @@ export function PostProvider(props) {
         headers: {
           Authorization: `Bearer ${token}`,
         },
+      }).then(() => {
+        if (window.location.href.includes("profile")) {
+          getPostsByUserId(user)
+        } else {
+          getAllPosts()
+        }
       })
-        .then(getAllPosts)
     })
   }
 
