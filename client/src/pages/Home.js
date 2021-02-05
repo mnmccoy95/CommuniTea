@@ -20,7 +20,7 @@ const Subscriptions = () => {
         <PostList posts={subs} />
       </div>)
     } else {
-      return (<p>You have no subscriptions!</p>)
+      return (<p className="margin">You have no subscriptions!</p>)
     }
   }
 

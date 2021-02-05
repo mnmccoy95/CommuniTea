@@ -18,7 +18,7 @@ const Inspiration = () => {
         <PostList posts={inspiration} />
       </div>)
     } else {
-      return (<p>You have no saved inspiration!</p>)
+      return (<p className="margin">You have no saved inspiration!</p>)
     }
   }
 

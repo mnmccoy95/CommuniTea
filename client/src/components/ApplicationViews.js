@@ -37,7 +37,6 @@ const ApplicationViews = () => {
               <InspirationProvider>
                 <SubProvider>
                   <Route path="/discover">
-                    <Search />
                     <Discover />
                   </Route>
                   <Route path="/newpost">

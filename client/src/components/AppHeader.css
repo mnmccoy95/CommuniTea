@@ -21,3 +21,10 @@
 .navbar-toggler {
   background-color:rgb(255, 95, 122)!important;
 }
+
+.vert-align {
+  top:0;
+  position:fixed;
+  z-index: 100;
+  width: 100%;
+}

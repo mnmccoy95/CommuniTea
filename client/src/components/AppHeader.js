@@ -61,7 +61,7 @@ const AppHeader = () => {
   }
 
   return (
-    <div>
+    <div className="vert-align">
       <Navbar dark expand="md">
         <NavbarBrand tag={Link} to="/">
           CommuniTea
