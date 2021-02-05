@@ -94,10 +94,6 @@ namespace Tabloid_Fullstack.Controllers
             }
 
             var currentUser = GetCurrentUserProfile();
-            if (currentUser.Approved != 1)
-            {
-                return BadRequest();
-            }
 
             post.UserProfileId = currentUser.Id;
 

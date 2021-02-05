@@ -62,7 +62,7 @@ const PostCard = ({ post }) => {
   }
 
   const subChecker = () => {
-    if (!window.location.href.includes("discover") && !window.location.href.includes("inspiration")) {
+    if (!window.location.href.includes("discover") && !window.location.href.includes("inspiration") && !window.location.href.includes("profile")) {
       return (<RemoveSubBtn post={post} />)
     } else {
       return (<SubscriptionButton post={post} />)

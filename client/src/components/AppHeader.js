@@ -87,7 +87,7 @@ const AppHeader = () => {
                   </NavLink>
                 </NavItem>
                 <NavItem>
-                  <NavLink>
+                  <NavLink to={`/profile/${parseInt(user.id)}`} tag={Link}>
                     {user.displayName}
                   </NavLink>
                 </NavItem>

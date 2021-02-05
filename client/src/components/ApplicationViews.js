@@ -15,6 +15,7 @@ import { InspirationProvider } from '../providers/InspirationProvider'
 import Inspiration from '../pages/Inspiration';
 import Home from '../pages/Home'
 import { SubProvider } from '../providers/SubProvider'
+import Profile from '../pages/Profile';
 
 const ApplicationViews = () => {
   const { isLoggedIn, getCurrentUser } = useContext(UserProfileContext);
@@ -50,6 +51,22 @@ const ApplicationViews = () => {
                   </Route>
                   <Route path="/" exact>
                     <Home />
+                  </Route>
+
+                </SubProvider>
+              </InspirationProvider>
+            </TagProvider>
+          </PostProvider>
+        </PostTagProvider>
+
+
+        <PostTagProvider>
+          <PostProvider>
+            <TagProvider>
+              <InspirationProvider>
+                <SubProvider>
+                  <Route path="/profile/:id">
+                    <Profile />
                   </Route>
                 </SubProvider>
               </InspirationProvider>

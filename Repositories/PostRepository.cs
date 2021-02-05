@@ -82,7 +82,7 @@ namespace CommuniTea.Repositories
         public List<PostSummary> GetByUserProfileId(int id)
         {
             return _context.Post
-                .Include(p => p.PostTag)
+                .Include(p => p.PostTag).ThenInclude(pt => pt.Tag)
                 .Where(p => p.UserProfileId == id)
                 .Select(p => new PostSummary()
                 {
@@ -91,7 +91,8 @@ namespace CommuniTea.Repositories
                     AuthorId = p.UserProfileId,
                     AuthorName = p.UserProfile.DisplayName,
                     AuthorImg = p.UserProfile.ImageLocation,
-                    Context = p.Content
+                    Context = p.Content,
+                    PostTag = p.PostTag
                 })
                 .ToList();
         }
