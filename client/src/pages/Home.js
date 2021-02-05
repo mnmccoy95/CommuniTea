@@ -14,10 +14,18 @@ const Subscriptions = () => {
   }, []);
 
 
+  const SubChecker = () => {
+    if (subs.length > 0) {
+      return (<div className="postList">
+        <PostList posts={subs} />
+      </div>)
+    } else {
+      return (<p>You have no subscriptions!</p>)
+    }
+  }
+
   return (
-    <div className="postList">
-      <PostList posts={subs} />
-    </div>
+    <SubChecker />
   );
 };
 

@@ -13,7 +13,7 @@ const Inspiration = () => {
   }, []);
 
   const InspChecker = () => {
-    if (inspiration) {
+    if (inspiration.length > 0) {
       return (<div className="postList">
         <PostList posts={inspiration} />
       </div>)
