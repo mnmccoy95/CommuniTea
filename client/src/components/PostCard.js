@@ -3,16 +3,16 @@ import { Card, Button, ButtonGroup, Form, InputGroup, Input, Modal, ModalHeader,
 import { Link } from "react-router-dom"
 import TagList from "./TagList"
 import { PostContext } from "../providers/PostProvider"
-import "../pages/Discover.css"
 import InspirationButton from "./InspirationButton"
 import RemoveInspBtn from "./RemoveInspBtn"
-import "./PostCard.css"
 import SubscriptionButton from "./SubscriptionBtn"
 import RemoveSubBtn from "./RemoveSubBtn"
+import { StyleContext } from "../providers/StyleProvider"
 
 
 const PostCard = ({ post }) => {
   const { updatePost, deletePost } = useContext(PostContext);
+  const { style } = useContext(StyleContext);
   const [isEditing, setIsEditing] = useState(false);
   const [pendingDelete, setPendingDelete] = useState(false);
   const [postEdits, setPostEdits] = useState("");
@@ -37,11 +37,11 @@ const PostCard = ({ post }) => {
       return (
         <>
           <ButtonGroup size="sm">
-            <Button className="btn btn-primary ownerBtns pinkBtn" onClick={showEditForm}>
+            <Button className={`btn btn-primary ownerBtns pinkBtn${style.child}`} onClick={showEditForm}>
               Edit
             </Button>
             <Button
-              className="btn dangerBtn ownerBtns"
+              className={`btn dangerBtn${style.child} ownerBtns`}
               onClick={(e) => setPendingDelete(true)}
             >
               Delete
@@ -71,11 +71,11 @@ const PostCard = ({ post }) => {
   }
 
   return (
-    <Card className="col postContainer">
-      <div className="postHeader">
+    <Card className={`col postContainer${style.child}`}>
+      <div className={`postHeader${style.child}`}>
         <div className="postInfo">
           <img className="userImage" src={post.authorImg} alt={post.authorName}></img>
-          <Link to={`/profile/${post.authorId}`} className="userName">{post.authorName}</Link>
+          <Link to={`/profile/${post.authorId}`} className={`userName${style.child}`}>{post.authorName}</Link>
         </div>
         {subChecker()}
       </div>
@@ -97,13 +97,13 @@ const PostCard = ({ post }) => {
               <ButtonGroup size="sm">
                 <Button
                   type="button"
-                  className="ownerBtns pinkBtn"
+                  className={`ownerBtns pinkBtn${style.child}`}
                   onClick={(e) => {
                     createEditPost();
                     updatePost(post)
                     hideEditForm()
                   }}>Save</Button>
-                <Button className="ownerBtns cancelBtn" onClick={hideEditForm}>
+                <Button className={`ownerBtns cancelBtn${style.child}`} onClick={hideEditForm}>
                   Cancel
               </Button>
               </ButtonGroup>
@@ -128,8 +128,8 @@ const PostCard = ({ post }) => {
           undone.
         </ModalBody>
         <ModalFooter>
-          <Button className="cancelBtn" onClick={(e) => setPendingDelete(false)}>No, Cancel</Button>
-          <Button className="btn dangerBtn" onClick={(e) => {
+          <Button className={`cancelBtn${style.child}`} onClick={(e) => setPendingDelete(false)}>No, Cancel</Button>
+          <Button className={`btn dangerBtn${style.child}`} onClick={(e) => {
             deletePost(post)
             setPendingDelete(false);
             Modal.isOpen = { pendingDelete }

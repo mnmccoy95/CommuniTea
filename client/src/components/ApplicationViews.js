@@ -16,9 +16,11 @@ import Inspiration from '../pages/Inspiration';
 import Home from '../pages/Home'
 import { SubProvider } from '../providers/SubProvider'
 import Profile from '../pages/Profile';
+import { StyleContext } from '../providers/StyleProvider'
 
 const ApplicationViews = () => {
   const { isLoggedIn, getCurrentUser } = useContext(UserProfileContext);
+  const { style, getStyle } = useContext(StyleContext);
   const user = getCurrentUser();
 
   const approvalChecker = () => {
@@ -32,6 +34,7 @@ const ApplicationViews = () => {
 
     } else if (user && user.approved === 1) {
       return (<>
+        {getStyle()}
         <PostTagProvider>
           <PostProvider>
             <TagProvider>

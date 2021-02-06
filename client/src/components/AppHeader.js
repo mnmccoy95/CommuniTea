@@ -9,11 +9,12 @@ import {
   NavItem,
   NavLink,
 } from 'reactstrap';
-import './AppHeader.css';
 import { UserProfileContext } from "../providers/UserProfileProvider"
+import { StyleContext } from "../providers/StyleProvider"
 
 const AppHeader = () => {
   const { getCurrentUser, logout } = useContext(UserProfileContext);
+  const { style, getStyle } = useContext(StyleContext);
   const user = getCurrentUser();
   const history = useHistory();
   const [isOpen, setIsOpen] = useState(false);
@@ -62,8 +63,9 @@ const AppHeader = () => {
 
   return (
     <div className="vert-align">
-      <Navbar dark expand="md">
-        <NavbarBrand tag={Link} to="/">
+      {getStyle()}
+      <Navbar className={`navbar${style.child}`} dark expand="md">
+        <NavbarBrand className={`navbar-brand${style.child}`} tag={Link} to="/">
           CommuniTea
         </NavbarBrand>
         <NavbarToggler onClick={toggle} />
@@ -72,27 +74,27 @@ const AppHeader = () => {
             {user && user.approved === 1 ? (
               <>
                 <NavItem>
-                  <NavLink to="/newpost" tag={Link}>
+                  <NavLink className={`nav-link${style.child}`} to="/newpost" tag={Link}>
                     New Post
                   </NavLink>
                 </NavItem>
                 <NavItem>
-                  <NavLink to="/discover" tag={Link}>
+                  <NavLink className={`nav-link${style.child}`} to="/discover" tag={Link}>
                     Discover
                   </NavLink>
                 </NavItem>
                 <NavItem>
-                  <NavLink to="/inspiration" tag={Link}>
+                  <NavLink className={`nav-link${style.child}`} to="/inspiration" tag={Link}>
                     Inspiration
                   </NavLink>
                 </NavItem>
                 <NavItem>
-                  <NavLink to={`/profile/${parseInt(user.id)}`} tag={Link}>
+                  <NavLink className={`nav-link${style.child}`} to={`/profile/${parseInt(user.id)}`} tag={Link}>
                     {user.displayName}
                   </NavLink>
                 </NavItem>
                 <NavItem>
-                  <NavLink className="pointer" onClick={logoutAndReturn}>
+                  <NavLink className={`nav-link${style.child} pointer`} onClick={logoutAndReturn}>
                     Logout
                   </NavLink>
                 </NavItem>

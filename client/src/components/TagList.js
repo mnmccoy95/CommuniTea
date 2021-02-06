@@ -1,5 +1,6 @@
 import React from "react"
 import TagCard from "./TagCard"
+import { StyleContext } from "../providers/StyleProvider"
 
 const TagList = ({ tags }) => {
 

@@ -1,4 +1,3 @@
-
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -16,6 +15,225 @@ code {
 .margin{
   margin-top: 10em;
 }
+
+.pointer {
+  cursor: pointer;
+}
+
+.vert-align {
+  top:0;
+  position:fixed;
+  z-index: 100;
+  width: 100%;
+}
+
+.userImage {
+  width: 3em;
+  height: auto;
+}
+
+@media screen and (min-width: 700px){
+  .postContainer {
+      width: 540px;
+      height: auto;
+  }
+  .postCard {
+      width: 540px;
+      height: auto;
+  }
+}
+
+.postCard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: .5em;
+}
+
+.postFooter{
+  display:flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-bottom: .5em;
+}
+
+.tagList {
+  display:flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.context-container {
+  margin-top: 1em;
+  display: flex;
+  flex-direction: row;
+  flex-wrap:wrap;
+  justify-content: space-between;
+}
+
+.postText {
+  padding-left: 1em;
+  text-align: left;
+  max-width: 400px;
+  max-height: 300px;
+  overflow-y: auto;
+}
+
+.ownerBtns {
+  max-height:2.5em!important;
+}
+
+.postTextEdit {
+  margin-left: .3em;
+}
+
+.searchForm{
+  display:flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.postInfo{
+  display:flex;
+  flex-direction: row;;
+}
+
+.postImage {
+  width: 100%;
+  height: auto;
+}
+
+.postList {
+  display: flex;
+  flex-direction:column;
+  align-items: center;
+  margin-top: 3.55em;
+}
+
+.hidden{
+  display: none;
+}
+
+.defaultImage {
+  width: 100%;
+  height: auto;
+}
+
+.uploadForm {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.uploadButton {
+  width: 10em;
+  align-self: center;
+}
+
+@media screen and (min-width: 700px){
+  .new-post-form-area {
+      width: 540px;
+      height: auto;
+  }
+}
+
+.submitContainer {
+  text-align: center;
+}
+
+.new-post-form-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 3.55em;
+  height: 75em;
+}
+
+@media screen and (max-width: 700px) {
+  .new-post-form-area{
+    width: 100%;
+    height:auto;
+  }
+  .new-post-form-area-classic{
+    width: 100%;
+    height:auto;
+  }
+  .new-post-form-area-goth{
+    width: 100%;
+    height:auto;
+  }
+}
+
+.new-post-label {
+    float: left;
+    margin-left: 5em;
+    font-weight: 700;
+}
+
+.hidden{
+    display: none;
+}
+
+.form-group{
+  text-align: left;
+}
+
+.quizAnswer {
+  margin-right: .5em;
+}
+
+.questionBox {
+  border-bottom: 1px solid;
+  margin-top: 1em;
+}
+
+.questionTitle {
+  margin-bottom: 1em;
+}
+
+.defaultImage-register{
+  width: 22em;
+  height: auto;
+}
+
+.hidden{
+  display: none;
+}
+
+.defaultImageContainer {
+  display: flex;
+  justify-content: center;
+}
+
+.uploadButton {
+  width: 10em;
+  align-self: center;
+}
+
+/*-----------------Scrollbar----------------*/
+::-webkit-scrollbar {
+  width: 5px;
+}
+  
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+  
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: rgb(255, 166, 166);
+}
+  
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: rgb(214, 133, 133);
+}
+/*-----------------Scrollbar----------------*/
+
+
+/*-----------------Anything to do with color goes under here!----------------*/
+/*---------------------------------Sweet--------------------------------*/
 
 textarea:focus,
 .btn:focus,
@@ -39,4 +257,475 @@ input[type="color"]:focus,
   border-color: rgba(239, 104, 104, 0.8)!important;
   box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(239, 104, 104, 0.8)!important;
   outline: 0 none!important;
+}
+
+.navbar {
+  background-color: lightpink;
+}
+
+.navbar-brand {
+  color:rgb(255, 95, 122)!important;
+}
+
+.nav-link {
+  color:rgb(255, 95, 122)!important;
+}
+
+.navbar-text {
+  color:rgb(255, 95, 122)!important;
+}
+
+.navbar-toggler {
+  background-color:rgb(255, 95, 122)!important;
+}
+
+.postHeader{
+  max-height: 4em;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  border-bottom:1px pink solid;
+  margin-top:1em;
+  margin-bottom:1em;
+}
+
+.tagCard {
+  background-color: pink!important;
+  border-color: pink!important;
+  color: white!important;
+}
+
+.tagCard:hover {
+  color: white;
+  background-color: rgb(255, 152, 152)!important;
+  border-color: rgb(255, 152, 152)!important;
+}
+
+.removeInsp {
+  color: pink!important;
+  padding: 0em!important;
+}
+
+.addInsp {
+  color:gray!important;
+  padding: 0em!important;
+}
+
+.pinkBtn {
+  background-color: pink!important;
+  border-color: pink!important;
+  color: white!important;
+}
+
+.pinkBtn:hover {
+  color: white;
+  background-color: rgb(255, 152, 152)!important;
+  border-color: rgb(255, 152, 152)!important;
+}
+
+.dangerBtn {
+  background-color: rgb(255, 152, 152)!important;
+  border-color: rgb(255, 152, 152)!important;
+  color: white!important;
+}
+
+.dangerBtn:hover {
+  color: white;
+  background-color: rgb(255, 115, 115)!important;
+  border-color: rgb(255, 115, 115)!important;
+}
+
+.cancelBtn {
+  background-color: white!important;
+  border-color: rgb(255, 152, 152)!important;
+  color: rgb(255, 152, 152)!important;
+}
+
+.cancelBtn:hover {
+  color: white!important;
+  background-color: rgb(255, 115, 115)!important;
+  border-color: rgb(255, 115, 115)!important;
+}
+
+.userName {
+  margin-left: .5em;
+  color: rgb(255, 115, 115)!important;
+}
+
+.searchBar {
+  height: 38px;
+  outline: gray!important;
+}
+
+.rbt-token {
+  color:rgb(196, 91, 91)!important;
+  background-color: rgb(255, 227, 230)!important;
+}
+
+.new-post-form-area {
+  margin-top: 1em;
+  padding: 2em;
+  border: 2px solid rgb(224, 196, 196);
+  background-color: rgb(255, 233, 240);
+  color:gray;
+}
+
+.btn-quiz-submit{
+  background-color: lightpink!important;
+  color: white!important;
+  margin-top: 1em;
+}
+
+.new-post-form-title {
+  margin-bottom: 1em;
+  color:gray;
+}
+
+/*-----------------Anything to do with color goes under here!----------------*/
+/*---------------------------------Classic--------------------------------*/
+
+.postList-classic {
+  background-image: url(./images/beige-simple.png);
+  background-repeat: repeat;
+}
+
+.classic textarea:focus,
+.btn:focus,
+.focus,
+.form-control:focus,
+input[type="textarea"]:focus,
+input[type="password"]:focus,
+input[type="datetime"]:focus,
+input[type="datetime-local"]:focus,
+input[type="date"]:focus,
+input[type="month"]:focus,
+input[type="time"]:focus,
+input[type="week"]:focus,
+input[type="number"]:focus,
+input[type="email"]:focus,
+input[type="url"]:focus,
+input[type="search"]:focus,
+input[type="tel"]:focus,
+input[type="color"]:focus,
+.uneditable-input:focus {   
+  border-color: darkred!important;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px darkred!important;
+  outline: 0 none!important;
+}
+
+.margin-whole-classic{
+  background-image: url(./images/beige-simple.png);
+  background-repeat: repeat;
+  height: 57em;
+  width: 100%;
+  display:flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 3.55em;
+}
+
+.new-post-form-container-classic {
+  background-image: url(./images/beige-simple.png);
+  background-repeat: repeat;
+  height: 100em;
+}
+
+.navbar-classic {
+  background-color: burlywood;
+}
+
+.navbar-brand-classic {
+  color: darkred!important;
+}
+
+.nav-link-classic {
+  color:darkred!important;
+}
+
+.navbar-text-classic {
+  color:darkred!important;
+}
+
+.navbar-toggler-classic {
+  background-color:darkred!important;
+}
+
+.postHeader-classic {
+  max-height: 4em;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  border-bottom:1px darkkhaki solid;
+  margin-top:1em;
+  margin-bottom:1em;
+}
+
+.tagCard-classic {
+  background-color: burlywood!important;
+  border-color: burlywood!important;
+  color: white!important;
+}
+
+.tagCard-classic:hover {
+  color: white;
+  background-color: sienna!important;
+  border-color: sienna!important;
+}
+
+.removeInsp-classic {
+  color: darkred!important;
+  padding: 0em!important;
+}
+
+.addInsp-classic {
+  color:gray!important;
+  padding: 0em!important;
+}
+
+.pinkBtn-classic {
+  background-color: burlywood!important;
+  border-color: burlywood!important;
+  color: white!important;
+}
+
+.pinkBtn-classic:hover {
+  color: white;
+  background-color: sienna!important;
+  border-color: sienna!important;
+}
+
+.dangerBtn-classic {
+  background-color: sienna!important;
+  border-color: sienna!important;
+  color: white!important;
+}
+
+.dangerBtn-classic:hover {
+  color: white;
+  background-color: burlywood!important;
+  border-color: burlywood!important;
+}
+
+.cancelBtn-classic {
+  background-color: white!important;
+  border-color: sienna!important;
+  color: sienna!important;
+}
+
+.cancelBtn-classic:hover {
+  color: white!important;
+  background-color: sienna!important;
+  border-color: sienna!important;
+}
+
+.userName-classic {
+  margin-left: .5em;
+  color: sienna!important;
+}
+
+.searchBar-classic {
+  height: 38px;
+  outline: gray!important;
+}
+
+.rbt-token-classic {
+  color:sienna!important;
+  background-color: wheat!important;
+}
+
+.new-post-form-area-classic {
+  margin-top: 1em;
+  padding: 2em;
+  border: 2px solid rgb(224, 196, 196);
+  width: 540px;
+  background-color: papayawhip!important;
+  color:sienna!important;
+}
+
+.btn-quiz-submit-classic {
+  background-color: burlywood!important;
+  color: white!important;
+  margin-top: 1em;
+}
+
+.new-post-form-title-classic {
+  margin-bottom: 1em;
+  color:gray;
+}
+
+/*-----------------Anything to do with color goes under here!----------------*/
+/*---------------------------------Goth--------------------------------*/
+
+.postList-goth {
+  background-image: url(./images/holylantern.jpg);
+  background-repeat: repeat;
+}
+
+.goth textarea:focus,
+.btn:focus,
+.focus,
+.form-control:focus,
+input[type="textarea"]:focus,
+input[type="password"]:focus,
+input[type="datetime"]:focus,
+input[type="datetime-local"]:focus,
+input[type="date"]:focus,
+input[type="month"]:focus,
+input[type="time"]:focus,
+input[type="week"]:focus,
+input[type="number"]:focus,
+input[type="email"]:focus,
+input[type="url"]:focus,
+input[type="search"]:focus,
+input[type="tel"]:focus,
+input[type="color"]:focus,
+.uneditable-input:focus {   
+  border-color: gray!important;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px gray!important;
+  outline: 0 none!important;
+}
+
+.margin-whole-goth{
+  background-image: url(./images/holylantern.jpg);
+  background-repeat: repeat;
+  height: 57em;
+  width: 100%;
+  display:flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 3.55em;
+  color: white;
+}
+
+.new-post-form-container-goth {
+  background-image: url(./images/holylantern.jpg);
+  background-repeat: repeat;
+  height: 100em;
+}
+
+.navbar-goth {
+  background-color: gray;
+}
+
+.navbar-brand-goth {
+  color:black!important;
+}
+
+.nav-link-goth {
+  color:black!important;
+}
+
+.navbar-text-goth {
+  color:black!important;
+}
+
+.navbar-toggler-goth {
+  background-color:black!important;
+}
+
+.postHeader-goth {
+  max-height: 4em;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  border-bottom:1px black solid;
+  margin-top:1em;
+  margin-bottom:1em;
+}
+
+.tagCard-goth {
+  background-color: gray!important;
+  border-color: gray!important;
+  color: white!important;
+}
+
+.tagCard-goth:hover {
+  color: white;
+  background-color: black!important;
+  border-color: black!important;
+}
+
+.removeInsp-goth {
+  color: darkred!important;
+  padding: 0em!important;
+}
+
+.addInsp-goth {
+  color:gray!important;
+  padding: 0em!important;
+}
+
+.pinkBtn-goth {
+  background-color: gray!important;
+  border-color: gray!important;
+  color: white!important;
+}
+
+.pinkBtn-goth:hover {
+  color: white;
+  background-color: black!important;
+  border-color: black!important;
+}
+
+.dangerBtn-goth {
+  background-color: black!important;
+  border-color: black!important;
+  color: white!important;
+}
+
+.dangerBtn-goth:hover {
+  color: white;
+  background-color: gray!important;
+  border-color: gray!important;
+}
+
+.cancelBtn-goth {
+  background-color: white!important;
+  border-color: black!important;
+  color: black!important;
+}
+
+.cancelBtn-goth:hover {
+  color: white!important;
+  background-color:black!important;
+  border-color: black!important;
+}
+
+.userName-goth {
+  margin-left: .5em;
+  color:black!important;
+}
+
+.searchBar-goth {
+  height: 38px;
+  outline: gray!important;
+}
+
+.goth .rbt-token {
+  color:white!important;
+  background-color: black!important;
+}
+
+.new-post-form-area-goth {
+  margin-top: 1em;
+  padding: 2em;
+  border: 2px solid rgb(192, 192, 192);
+  width: 540px;
+  background-color: lightgrey;
+  color:gray;
+}
+
+.btn-quiz-submit-goth {
+  background-color: black!important;
+  color: white!important;
+  margin-top: 1em;
+}
+
+.new-post-form-title-goth {
+  margin-bottom: 1em;
+  color:gray;
+}
+
+.postContainer-goth {
+  background-color: rgba(255, 255, 255, 0.87)!important;
 }

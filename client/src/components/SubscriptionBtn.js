@@ -1,11 +1,12 @@
 import React, { useContext, useEffect } from "react";
 import { SubContext } from "../providers/SubProvider";
 import { UserProfileContext } from "../providers/UserProfileProvider"
-import "./PostCard.css"
+import { StyleContext } from "../providers/StyleProvider"
 
 const SubscriptionButton = ({ post }) => {
   const { rawSubs, getSubList, addSub, deleteSub } = useContext(SubContext);
   const { getCurrentUser } = useContext(UserProfileContext);
+  const { style } = useContext(StyleContext);
   const user = getCurrentUser();
 
   useEffect(() => {
@@ -30,9 +31,9 @@ const SubscriptionButton = ({ post }) => {
   const subChecker = () => {
     const subExist = rawSubs.map((s) => { return s.providerUserProfileId })
     if (subExist.includes(post.authorId)) {
-      return (<button id={post.authorId} className="cancelBtn btn" onClick={(e) => { deleteSubscription(e) }}>Unsubscribe</button>)
+      return (<button id={post.authorId} className={`cancelBtn${style.child} btn`} onClick={(e) => { deleteSubscription(e) }}>Unsubscribe</button>)
     } else {
-      return (<button id={post.authorId} className="dangerBtn btn" onClick={(e) => { addSubscription(e) }}>Subscribe</button>)
+      return (<button id={post.authorId} className={`dangerBtn${style.child} btn`} onClick={(e) => { addSubscription(e) }}>Subscribe</button>)
     }
   }
 

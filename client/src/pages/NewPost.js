@@ -3,16 +3,17 @@ import { TagContext } from "../providers/TagProvider"
 import { UserProfileContext } from "../providers/UserProfileProvider"
 import { useHistory } from "react-router-dom";
 import WindowChecker from "../utils/WindowChecker";
-import "./NewPost.css"
 import { Typeahead } from 'react-bootstrap-typeahead';
 import { FormGroup, Input } from "reactstrap"
 import 'react-bootstrap-typeahead/css/Typeahead.css';
 import { PostTagContext } from "../providers/PostTagProvider"
+import { StyleContext } from "../providers/StyleProvider"
 
 const NewPost = () => {
   const { tags, getTags } = useContext(TagContext);
   const { getToken } = useContext(UserProfileContext);
   const { addPostTag } = useContext(PostTagContext);
+  const { style } = useContext(StyleContext);
   const [multiSelections, setMultiSelections] = useState([]);
   const [post, setPost] = useState([]);
   const history = useHistory();
@@ -98,8 +99,8 @@ const NewPost = () => {
 
 
   return (
-    <section className="new-post-form-container">
-      <div className="new-post-form-area">
+    <section className={`new-post-form-container new-post-form-container${style.child}`}>
+      <div className={`new-post-form-area${style.child} new-post-form-area`}>
         <h2 className="new-post-form-title">Create A New Post</h2>
         <form id="newPostForm" onSubmit={(e) => { handleClickSubmitPost(e) }}>
           <fieldset>
@@ -111,7 +112,7 @@ const NewPost = () => {
                 <h6 className="loadingImage">Loading...</h6>
               ) : <></>}
               <br />
-              <label htmlFor="embedpollfileinput" className="btn btn-info notHidden uploadButton dangerBtn">
+              <label htmlFor="embedpollfileinput" className={`btn btn-info notHidden uploadButton dangerBtn${style.child}`}>
                 Upload image
               </label>
               <input hidden type="file" onChange={uploadImage} className="inputfile" id="embedpollfileinput" />
@@ -141,7 +142,7 @@ const NewPost = () => {
             </div>
           </fieldset>
           <fieldset className="hidden submitContainer">
-            <button className="submitNewPostBtn hidden btn dangerBtn" type="submit" > Submit Post </button>
+            <button className={`submitNewPostBtn hidden btn dangerBtn${style.child}`} type="submit" > Submit Post </button>
           </fieldset>
         </form>
       </div>

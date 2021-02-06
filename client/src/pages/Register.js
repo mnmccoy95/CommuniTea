@@ -3,7 +3,7 @@ import { useHistory } from "react-router-dom";
 import { Button, Input } from "reactstrap";
 import { Link } from "react-router-dom";
 import { UserProfileContext } from "../providers/UserProfileProvider";
-import "./Register.css"
+import { StyleContext } from "../providers/StyleProvider"
 
 const Register = () => {
   const { register } = useContext(UserProfileContext);

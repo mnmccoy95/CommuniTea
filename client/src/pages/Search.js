@@ -1,9 +1,11 @@
 import React, { useContext, useState } from "react";
 import { Button } from "reactstrap";
 import { PostContext } from "../providers/PostProvider"
+import { StyleContext } from "../providers/StyleProvider"
 
 const Search = () => {
   const { getPostsByTagName } = useContext(PostContext);
+  const { style } = useContext(StyleContext);
   const [input, setInput] = useState("");
 
   const search = (evt) => {
@@ -25,7 +27,7 @@ const Search = () => {
           value={input}
           placeholder="Search" />
 
-        <Button className="dangerBtn" type="submit" onClick={(e) => { search(e) }}>
+        <Button className={`dangerBtn${style.child}`} type="submit" onClick={(e) => { search(e) }}>
           Search
         </Button>
       </fieldset>

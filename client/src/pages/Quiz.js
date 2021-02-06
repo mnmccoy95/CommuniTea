@@ -2,8 +2,8 @@ import React, { useContext, useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 import { QuizContext } from "../providers/QuizProvider"
 import { UserProfileContext } from "../providers/UserProfileProvider"
-import "./Quiz.css"
 import WindowChecker from "../utils/WindowChecker";
+import { StyleContext } from "../providers/StyleProvider"
 
 const Quiz = () => {
   const [newPost, setNewPost] = useState([]);

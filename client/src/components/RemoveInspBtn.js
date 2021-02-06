@@ -1,11 +1,12 @@
 import React, { useContext } from "react";
 import { InspirationContext } from "../providers/InspirationProvider";
 import { UserProfileContext } from "../providers/UserProfileProvider"
-import "./PostCard.css"
+import { StyleContext } from "../providers/StyleProvider"
 
 const RemoveInspBtn = ({ id }) => {
   const { deleteInspiration } = useContext(InspirationContext);
   const { getCurrentUser } = useContext(UserProfileContext);
+  const { style } = useContext(StyleContext);
   const user = getCurrentUser();
 
 
@@ -16,7 +17,7 @@ const RemoveInspBtn = ({ id }) => {
 
   return (
     <div>
-      <button id={id} onClick={(e) => { deleteInsp(e) }} className="removeInsp btn btn-lg"><i id={id} className="fas fa-heart fa-2x"></i></button>
+      <button id={id} onClick={(e) => { deleteInsp(e) }} className={`removeInsp${style.child} btn btn-lg`}><i id={id} className="fas fa-heart fa-2x"></i></button>
     </div>
   );
 };
