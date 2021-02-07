@@ -46,6 +46,7 @@ namespace CommuniTea.Controllers
         public IActionResult Post(UserProfile userProfile)
         {
             userProfile.Approved = 2;
+            userProfile.StyleId = 1;
             _repo.Add(userProfile);
             return CreatedAtAction(
                 nameof(GetUserProfile),
@@ -83,6 +84,26 @@ namespace CommuniTea.Controllers
             user.Approved = acceptance;
             _repo.Update(user);
             return Ok(user);
+        }
+
+        [HttpGet("updatestyle/{userProfileId}/{styleId}")]
+        public IActionResult Update(int userProfileId, int styleId)
+        {
+            var currentUser = GetCurrentUserProfile();
+            if(currentUser.Id != userProfileId)
+            {
+                return Unauthorized();
+            }
+
+            if(currentUser.Approved != 1)
+            {
+                return BadRequest();
+            }
+
+            currentUser.StyleId = styleId;
+
+            _repo.Update(currentUser);
+            return Ok(currentUser);
         }
 
         private UserProfile GetCurrentUserProfile()

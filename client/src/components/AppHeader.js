@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import {
   Collapse,
@@ -19,11 +19,13 @@ const AppHeader = () => {
   const history = useHistory();
   const [isOpen, setIsOpen] = useState(false);
 
+
   const toggle = () => setIsOpen(!isOpen);
 
   const logoutAndReturn = () => {
     return logout().then(() => {
       history.push('/login');
+      getStyle()
     });
   };
 
@@ -63,7 +65,6 @@ const AppHeader = () => {
 
   return (
     <div className="vert-align">
-      {getStyle()}
       <Navbar className={`navbar${style.child}`} dark expand="md">
         <NavbarBrand className={`navbar-brand${style.child}`} tag={Link} to="/">
           CommuniTea

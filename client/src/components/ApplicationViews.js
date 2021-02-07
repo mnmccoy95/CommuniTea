@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Switch, Route } from 'react-router-dom';
 import { UserProfileContext } from '../providers/UserProfileProvider';
 import { QuizProvider } from '../providers/QuizProvider'
@@ -20,8 +20,13 @@ import { StyleContext } from '../providers/StyleProvider'
 
 const ApplicationViews = () => {
   const { isLoggedIn, getCurrentUser } = useContext(UserProfileContext);
-  const { style, getStyle } = useContext(StyleContext);
+  const { getStyle } = useContext(StyleContext);
+  const [style, setStyle] = useState([]);
   const user = getCurrentUser();
+
+  useEffect(() => {
+    setStyle(getStyle())
+  }, [])
 
   const approvalChecker = () => {
     if (user && user.approved === 2) {
@@ -34,7 +39,7 @@ const ApplicationViews = () => {
 
     } else if (user && user.approved === 1) {
       return (<>
-        {getStyle()}
+
         <PostTagProvider>
           <PostProvider>
             <TagProvider>

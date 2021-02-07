@@ -18,5 +18,6 @@ namespace CommuniTea.Models
         public List<Post> Post { get; set; }
         public List<Inspiration> Inspiration { get; set; }
         public List<Sub> Sub { get; set; }
+        public int StyleId { get; set; }
     }
 }
