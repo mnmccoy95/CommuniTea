@@ -48,6 +48,7 @@ const NewPost = () => {
     for (const m of matches) {
       m.style.display = "inline-block"
     }
+
     document.querySelector(".notHidden").style.display = "none"
   }
 

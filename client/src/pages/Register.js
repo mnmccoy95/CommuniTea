@@ -41,6 +41,8 @@ const Register = () => {
     for (const m of matches) {
       m.style.display = "block"
     }
+    const submit = document.querySelector(".submitContainer");
+    submit.style.display = "flex"
     document.querySelector(".notHidden").style.display = "none"
   }
 
@@ -156,7 +158,7 @@ const Register = () => {
           />
         </div>
         <div className="form-group hidden submitContainer">
-          <Button type="submit" className="dangerBtn btn" disabled={loading}>
+          <Button type="submit" className="submitNewPostBtn dangerBtn btn" disabled={loading}>
             Sign Up
           </Button>
         </div>

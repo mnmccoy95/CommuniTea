@@ -146,7 +146,8 @@ code {
 }
 
 .submitContainer {
-  text-align: center;
+  display:flex;
+  justify-content: center;
 }
 
 .new-post-form-container {
@@ -279,6 +280,10 @@ code {
   text-align: left;
 }
 
+.newPostBtn {
+  border-radius: .25rem;
+}
+
 /*-----------------Scrollbar----------------*/
 ::-webkit-scrollbar {
   width: 5px;
@@ -396,7 +401,6 @@ input[type="color"]:focus,
   background-color: rgb(255, 152, 152)!important;
   border-color: rgb(255, 152, 152)!important;
   color: white!important;
-  max-height: 2.5em;
 }
 
 .dangerBtn:hover {

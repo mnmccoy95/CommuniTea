@@ -75,7 +75,7 @@ const AppHeader = () => {
             {user && user.approved === 1 ? (
               <>
                 <NavItem>
-                  <NavLink className={`nav-link${style.child}`} to="/newpost" tag={Link}>
+                  <NavLink className={`dangerBtn${style.child} newPostBtn`} to="/newpost" tag={Link}>
                     New Post
                   </NavLink>
                 </NavItem>
