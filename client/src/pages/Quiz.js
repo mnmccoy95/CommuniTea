@@ -56,6 +56,7 @@ const Quiz = () => {
   const { quiz, getQuiz } = useContext(QuizContext);
 
   useEffect(() => {
+    window.scrollTo(0, 0)
     WindowChecker()
     getQuiz();
   }, [])

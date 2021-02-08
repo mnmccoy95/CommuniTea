@@ -28,11 +28,11 @@ const Profile = () => {
         <PostList posts={posts} />
       </Col>)
     } else if (posts.length === 0 && parseInt(id) === userProfileId) {
-      return (<div className={`margin-whole${style.child}`}>
+      return (<div className={`margin-whole${style.child} col-auto`}>
         <p className={`margin${style.child}`}>You have no posts!</p>
       </div>)
     } else if (posts.length === 0 && parseInt(id) !== userProfileId) {
-      return (<div className={`margin-whole${style.child}`}>
+      return (<div className={`margin-whole${style.child} col-auto`}>
         <p className={`margin${style.child}`}>This user has no posts!</p>
       </div>)
     }
