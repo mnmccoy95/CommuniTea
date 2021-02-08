@@ -35,6 +35,9 @@ const ApplicationViews = () => {
           <Route path="/quiz">
             <Quiz />
           </Route>
+          <Route path="/" exact>
+            <Quiz />
+          </Route>
         </QuizProvider>)
 
     } else if (user && user.approved === 1) {
@@ -99,6 +102,12 @@ const ApplicationViews = () => {
         </PostTagProvider>
 
       </>
+      )
+    } else {
+      return (
+        <Route path="/" exact>
+          <Login />
+        </Route>
       )
     }
   }

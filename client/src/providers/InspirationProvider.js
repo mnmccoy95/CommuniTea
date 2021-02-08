@@ -8,6 +8,7 @@ export function InspirationProvider(props) {
 
   const { getToken, getCurrentUser } = useContext(UserProfileContext);
   const [inspiration, setInspiration] = useState([]);
+  const [loading, setLoading] = useState([]);
   const user = getCurrentUser();
 
   const getInspirationByUser = () => {
@@ -22,12 +23,14 @@ export function InspirationProvider(props) {
         .then((res) => res.json())
         .then((insp) => {
           setInspiration(insp);
+          setLoading(false)
         }
         )
     );
   };
 
   const deleteInspiration = (id) => {
+    setLoading(true)
     getToken().then((token) =>
       fetch(`${apiUrl}/${id}`, {
         method: "DELETE",
@@ -41,6 +44,7 @@ export function InspirationProvider(props) {
   };
 
   const addInspiration = (insp) => {
+    setLoading(true)
     getToken().then((token) =>
       fetch(`${apiUrl}`, {
         method: "POST",
@@ -60,7 +64,8 @@ export function InspirationProvider(props) {
         setInspiration,
         getInspirationByUser,
         deleteInspiration,
-        addInspiration
+        addInspiration,
+        loading
       }}
     >
       {props.children}

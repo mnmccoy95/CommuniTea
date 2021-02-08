@@ -4,7 +4,7 @@ import { UserProfileContext } from "../providers/UserProfileProvider"
 import { StyleContext } from "../providers/StyleProvider"
 
 const RemoveSubBtn = ({ post }) => {
-  const { deleteSub } = useContext(SubContext);
+  const { deleteSub, loading } = useContext(SubContext);
   const { getCurrentUser } = useContext(UserProfileContext);
   const { style } = useContext(StyleContext);
   const user = getCurrentUser();
@@ -16,7 +16,7 @@ const RemoveSubBtn = ({ post }) => {
   }
 
   const subChecker = () => {
-    return (<button id={post.authorId} className={`cancelBtn${style.child} btn`} onClick={(e) => { deleteSubscription(e) }}>Unsubscribe</button>)
+    return (<button id={post.authorId} className={`cancelBtn${style.child} btn`} onClick={(e) => { deleteSubscription(e) }} disabled={loading}>Unsubscribe</button>)
   }
 
   return (

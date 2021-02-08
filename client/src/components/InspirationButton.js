@@ -1,10 +1,10 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { InspirationContext } from "../providers/InspirationProvider";
 import { UserProfileContext } from "../providers/UserProfileProvider"
 import { StyleContext } from "../providers/StyleProvider"
 
 const InspirationButton = ({ id }) => {
-  const { inspiration, getInspirationByUser, addInspiration, deleteInspiration } = useContext(InspirationContext);
+  const { inspiration, getInspirationByUser, addInspiration, deleteInspiration, loading } = useContext(InspirationContext);
   const { getCurrentUser } = useContext(UserProfileContext);
   const { style } = useContext(StyleContext);
   const user = getCurrentUser();
@@ -30,9 +30,9 @@ const InspirationButton = ({ id }) => {
   const inspChecker = () => {
     const inspExist = inspiration.map((i) => { return i.id });
     if (inspExist.includes(id)) {
-      return (<button id={id} onClick={(e) => { deleteInsp(e) }} className={`removeInsp${style.child} btn btn-lg`}><i id={id} className="fas fa-heart fa-2x"></i></button>)
+      return (<button id={id} onClick={(e) => { deleteInsp(e) }} className={`removeInsp${style.child} btn btn-lg`} disabled={loading}><i id={id} className="fas fa-heart fa-2x"></i></button>)
     } else {
-      return (<button id={id} onClick={(e) => { addInsp(e) }} className={`addInsp${style.child} btn btn-lg`}><i id={id} className="fas fa-heart fa-2x"></i></button>)
+      return (<button id={id} onClick={(e) => { addInsp(e) }} className={`addInsp${style.child} btn btn-lg`} disabled={loading}><i id={id} className="fas fa-heart fa-2x"></i></button>)
     }
   }
 

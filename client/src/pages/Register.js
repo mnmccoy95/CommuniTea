@@ -3,7 +3,7 @@ import { useHistory } from "react-router-dom";
 import { Button, Input } from "reactstrap";
 import { Link } from "react-router-dom";
 import { UserProfileContext } from "../providers/UserProfileProvider";
-import { StyleContext } from "../providers/StyleProvider"
+import { toast } from "react-toastify";
 
 const Register = () => {
   const { register } = useContext(UserProfileContext);
@@ -49,7 +49,7 @@ const Register = () => {
     e.preventDefault();
 
     if (password !== confirm) {
-
+      toast.error("Passwords don't match!");
       return;
     }
 
@@ -70,7 +70,7 @@ const Register = () => {
       })
       .catch((err) => {
         setLoading(false);
-
+        toast.error("Something went wrong!");
       });
   };
 

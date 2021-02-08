@@ -13,7 +13,7 @@ code {
 }
 
 .margin{
-  margin-top: 10em;
+  margin-top: .1em;
 }
 
 .pointer {
@@ -327,6 +327,7 @@ input[type="color"]:focus,
   background-color: rgb(255, 152, 152)!important;
   border-color: rgb(255, 152, 152)!important;
   color: white!important;
+  max-height: 2.5em;
 }
 
 .dangerBtn:hover {
@@ -381,6 +382,15 @@ input[type="color"]:focus,
   color:gray;
 }
 
+.margin-whole{
+  height: 57em;
+  width: 100%;
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 3.55em;
+}
+
 /*-----------------Anything to do with color goes under here!----------------*/
 /*---------------------------------Classic--------------------------------*/
 
@@ -389,38 +399,14 @@ input[type="color"]:focus,
   background-repeat: repeat;
 }
 
-.classic textarea:focus,
-.btn:focus,
-.focus,
-.form-control:focus,
-input[type="textarea"]:focus,
-input[type="password"]:focus,
-input[type="datetime"]:focus,
-input[type="datetime-local"]:focus,
-input[type="date"]:focus,
-input[type="month"]:focus,
-input[type="time"]:focus,
-input[type="week"]:focus,
-input[type="number"]:focus,
-input[type="email"]:focus,
-input[type="url"]:focus,
-input[type="search"]:focus,
-input[type="tel"]:focus,
-input[type="color"]:focus,
-.uneditable-input:focus {   
-  border-color: darkred!important;
-  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px darkred!important;
-  outline: 0 none!important;
-}
-
 .margin-whole-classic{
   background-image: url(./images/beige-simple.png);
   background-repeat: repeat;
   height: 57em;
   width: 100%;
   display:flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: center;
   margin-top: 3.55em;
 }
 
@@ -486,6 +472,7 @@ input[type="color"]:focus,
   background-color: burlywood!important;
   border-color: burlywood!important;
   color: white!important;
+  max-height: 2.5em;
 }
 
 .pinkBtn-classic:hover {
@@ -561,38 +548,14 @@ input[type="color"]:focus,
   background-repeat: repeat;
 }
 
-.goth textarea:focus,
-.btn:focus,
-.focus,
-.form-control:focus,
-input[type="textarea"]:focus,
-input[type="password"]:focus,
-input[type="datetime"]:focus,
-input[type="datetime-local"]:focus,
-input[type="date"]:focus,
-input[type="month"]:focus,
-input[type="time"]:focus,
-input[type="week"]:focus,
-input[type="number"]:focus,
-input[type="email"]:focus,
-input[type="url"]:focus,
-input[type="search"]:focus,
-input[type="tel"]:focus,
-input[type="color"]:focus,
-.uneditable-input:focus {   
-  border-color: gray!important;
-  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px gray!important;
-  outline: 0 none!important;
-}
-
 .margin-whole-goth{
   background-image: url(./images/holylantern.jpg);
   background-repeat: repeat;
   height: 57em;
   width: 100%;
   display:flex;
+  flex-direction:column;
   align-items: center;
-  justify-content: center;
   margin-top: 3.55em;
   color: white;
 }
@@ -659,6 +622,7 @@ input[type="color"]:focus,
   background-color: gray!important;
   border-color: gray!important;
   color: white!important;
+  max-height: 2.5em;
 }
 
 .pinkBtn-goth:hover {

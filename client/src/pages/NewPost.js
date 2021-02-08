@@ -17,6 +17,7 @@ const NewPost = () => {
   const [multiSelections, setMultiSelections] = useState([]);
   const [post, setPost] = useState([]);
   const history = useHistory();
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     WindowChecker()
@@ -51,6 +52,7 @@ const NewPost = () => {
   }
 
   const submitPost = (post) => {
+    setLoading(true)
     getToken().then((token) => {
       fetch(`/api/post`, {
         method: "POST",
@@ -72,7 +74,10 @@ const NewPost = () => {
             addPostTag(postTag)
           }
         })
-        .then((data) => history.push(`/discover`))
+        .then((data) => {
+          history.push(`/discover`)
+          setLoading(false)
+        })
         .then(localStorage.removeItem("image"))
     })
   }
@@ -142,7 +147,7 @@ const NewPost = () => {
             </div>
           </fieldset>
           <fieldset className="hidden submitContainer">
-            <button className={`submitNewPostBtn hidden btn dangerBtn${style.child}`} type="submit" > Submit Post </button>
+            <button className={`submitNewPostBtn hidden btn dangerBtn${style.child}`} type="submit" disabled={loading}> Submit Post </button>
           </fieldset>
         </form>
       </div>

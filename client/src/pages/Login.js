@@ -1,4 +1,5 @@
 import React, { useContext, useState } from "react";
+import { toast } from "react-toastify";
 import { useHistory } from "react-router-dom";
 import { Button, Input } from "reactstrap";
 import { Link } from "react-router-dom";
@@ -7,6 +8,7 @@ import { StyleContext } from "../providers/StyleProvider"
 
 const Login = () => {
   const { login, getCurrentUser } = useContext(UserProfileContext);
+  const { getStyle } = useContext(StyleContext);
   const [loading, setLoading] = useState(false);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -20,12 +22,16 @@ const Login = () => {
         setLoading(false);
         if (user.approved === 2) {
           history.push("/quiz")
+        } else if (user.approved === 0) {
+          toast.error("User not approved :(");
         } else {
+          getStyle()
           history.push("/");
         }
       })
       .catch((err) => {
         setLoading(false);
+        toast.error("Invalid email or password");
       });
   };
 

@@ -32,6 +32,9 @@ export function UserProfileProvider(props) {
           localStorage.setItem("userProfile", JSON.stringify(userProfile))
           setIsLoggedIn(true);
           return userProfile
+        } else if (userProfile.approved === 0) {
+          setIsLoggedIn(false);
+          return userProfile
         }
       });
   };

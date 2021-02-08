@@ -3,7 +3,7 @@ import { useHistory } from "react-router-dom";
 import { QuizContext } from "../providers/QuizProvider"
 import { UserProfileContext } from "../providers/UserProfileProvider"
 import WindowChecker from "../utils/WindowChecker";
-import { StyleContext } from "../providers/StyleProvider"
+import { toast } from "react-toastify";
 
 const Quiz = () => {
   const [newPost, setNewPost] = useState([]);
@@ -36,6 +36,7 @@ const Quiz = () => {
 
           } else {
             logout()
+            toast.error("User not approved.");
           }
         }))
   }

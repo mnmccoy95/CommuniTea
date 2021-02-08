@@ -33,7 +33,7 @@ namespace CommuniTea.Controllers
             var user = _repo.GetByFirebaseUserId(firebaseUserId);
             if (user.Approved == 0)
             {
-                return BadRequest();
+                return Ok(user);
             }
             else
             {

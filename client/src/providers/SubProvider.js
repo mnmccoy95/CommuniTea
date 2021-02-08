@@ -8,6 +8,7 @@ export function SubProvider(props) {
 
   const { getToken } = useContext(UserProfileContext);
   const [subs, setSubs] = useState([]);
+  const [loading, setLoading] = useState([]);
   const [rawSubs, setRawSubs] = useState([]);
   const userProfileId = parseInt(JSON.parse(localStorage.getItem('userProfile')).id);
 
@@ -32,6 +33,7 @@ export function SubProvider(props) {
             }
           }
           setSubs(postSubs);
+          setLoading(false)
         })
     );
   };
@@ -47,11 +49,13 @@ export function SubProvider(props) {
         .then((res) => res.json())
         .then((subs) => {
           setRawSubs(subs);
+          setLoading(false)
         })
     );
   };
 
   const addSub = (sub) => {
+    setLoading(true)
     getToken().then((token) =>
       fetch(`${apiUrl}`, {
         method: "POST",
@@ -65,6 +69,7 @@ export function SubProvider(props) {
   };
 
   const deleteSub = (providerId, subscriberId) => {
+    setLoading(true)
     getToken().then((token) =>
       fetch(`${apiUrl}/${providerId}/${subscriberId}`, {
         method: "DELETE",
@@ -84,7 +89,8 @@ export function SubProvider(props) {
         addSub,
         deleteSub,
         getSubList,
-        rawSubs
+        rawSubs,
+        loading
       }}
     >
       {props.children}

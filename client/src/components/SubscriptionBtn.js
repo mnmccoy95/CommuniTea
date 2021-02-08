@@ -4,7 +4,7 @@ import { UserProfileContext } from "../providers/UserProfileProvider"
 import { StyleContext } from "../providers/StyleProvider"
 
 const SubscriptionButton = ({ post }) => {
-  const { rawSubs, getSubList, addSub, deleteSub } = useContext(SubContext);
+  const { rawSubs, getSubList, addSub, deleteSub, loading } = useContext(SubContext);
   const { getCurrentUser } = useContext(UserProfileContext);
   const { style } = useContext(StyleContext);
   const user = getCurrentUser();
@@ -31,9 +31,9 @@ const SubscriptionButton = ({ post }) => {
   const subChecker = () => {
     const subExist = rawSubs.map((s) => { return s.providerUserProfileId })
     if (subExist.includes(post.authorId)) {
-      return (<button id={post.authorId} className={`cancelBtn${style.child} btn`} onClick={(e) => { deleteSubscription(e) }}>Unsubscribe</button>)
+      return (<button id={post.authorId} className={`cancelBtn${style.child} btn`} onClick={(e) => { deleteSubscription(e) }} disabled={loading}>Unsubscribe</button>)
     } else {
-      return (<button id={post.authorId} className={`dangerBtn${style.child} btn`} onClick={(e) => { addSubscription(e) }}>Subscribe</button>)
+      return (<button id={post.authorId} className={`dangerBtn${style.child} btn`} onClick={(e) => { addSubscription(e) }} disabled={loading}>Subscribe</button>)
     }
   }
 
