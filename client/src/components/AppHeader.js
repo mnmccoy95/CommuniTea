@@ -19,8 +19,6 @@ const AppHeader = () => {
   const history = useHistory();
   const [isOpen, setIsOpen] = useState(false);
 
-  const userId = parseInt(user.id);
-
 
   const toggle = () => setIsOpen(!isOpen);
 
@@ -92,7 +90,7 @@ const AppHeader = () => {
                   </NavLink>
                 </NavItem>
                 <NavItem>
-                  <NavLink className={`nav-link${style.child}`} to={`/profile/${userId}`} tag={Link}>
+                  <NavLink className={`nav-link${style.child}`} to={`/profile/${user.id}`} tag={Link}>
                     {user.displayName}
                   </NavLink>
                 </NavItem>
