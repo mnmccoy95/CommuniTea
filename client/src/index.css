@@ -34,11 +34,19 @@ code {
 
 @media screen and (min-width: 700px){
   .postContainer {
-      width: 540px;
+      width: 540px!important;
+      height: auto;
+  }
+  .postContainer-classic {
+      width: 540px!important;
+      height: auto;
+  }
+  .postContainer-goth {
+      width: 540px!important;
       height: auto;
   }
   .postCard {
-      width: 540px;
+      width: 540px!important;
       height: auto;
   }
 }
@@ -208,6 +216,67 @@ code {
 .uploadButton {
   width: 10em;
   align-self: center;
+}
+
+.profileContainer {
+  margin-top: 3.55em;
+}
+
+@media screen and (max-width: 905px) {
+  .row{
+    display:flex!important;
+    flex-direction: column!important;
+    align-content: center;
+  }
+  .col-auto {
+    align-self: center;
+  }
+}
+
+.profileSummary {
+  display:flex;
+  flex-direction:column;
+  max-height: 50em!important;
+  border: 1px pink solid;
+  margin-right: 6em;
+  margin-left: 7em;
+  padding: 1em;
+  width:300px;
+}
+
+@media screen and (max-width: 905px){
+  .profileSummary {
+    margin-right:0em!important;
+    margin-left:0em!important;
+  }
+
+  .profileSummary {
+    width:100%!important;
+  }
+
+  .profileSummary-classic {
+    margin-right:0em!important;
+    margin-left:0em!important;
+  }
+
+  .profileSummary-classic {
+    width:100%!important;
+  }
+
+  .profileSummary-goth {
+    margin-right:0em!important;
+    margin-left:0em!important;
+  }
+
+  .profileSummary-goth {
+    width:100%!important;
+  }
+}
+
+.bioContainer {
+  max-height: 20em;
+  overflow-y: auto;
+  text-align: left;
 }
 
 /*-----------------Scrollbar----------------*/
@@ -391,6 +460,21 @@ input[type="color"]:focus,
   margin-top: 3.55em;
 }
 
+.profileHeader{
+  max-height: 4em;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  border-bottom:1px pink solid;
+  margin-top:1em;
+  margin-bottom:1em;
+}
+
+
+
+
+
+
 /*-----------------Anything to do with color goes under here!----------------*/
 /*---------------------------------Classic--------------------------------*/
 
@@ -538,6 +622,40 @@ input[type="color"]:focus,
 .new-post-form-title-classic {
   margin-bottom: 1em;
   color:gray;
+}
+
+.profileContainer-classic {
+  margin-top: 3.55em;
+  background-image: url(./images/beige-simple.png);
+  background-repeat: repeat;
+  margin-right: 0em!important;
+  margin-left: 0em!important;
+}
+
+.container {
+  max-width: none!important;
+}
+
+.profileSummary-classic {
+  display:flex;
+  flex-direction:column;
+  max-height: 50em!important;
+  border: 1px burlywood solid;
+  margin-right: 6em;
+  margin-left: 7em;
+  background-color: #fff;
+  padding: 1em;
+  width:300px;
+}
+
+.profileHeader-classic {
+  max-height: 4em;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  border-bottom:1px burlywood solid;
+  margin-top:1em;
+  margin-bottom:1em;
 }
 
 /*-----------------Anything to do with color goes under here!----------------*/
@@ -692,4 +810,34 @@ input[type="color"]:focus,
 
 .postContainer-goth {
   background-color: rgba(255, 255, 255, 0.87)!important;
+}
+
+.profileContainer-goth {
+  margin-top: 3.55em;
+  background-image: url(./images/holylantern.jpg);
+  background-repeat: repeat;
+  margin-right: 0em!important;
+  margin-left: 0em!important;
+}
+
+.profileSummary-goth {
+  display:flex;
+  flex-direction:column;
+  max-height: 50em!important;
+  width:300px;
+  border: 1px gray solid;
+  margin-right: 6em;
+  margin-left: 7em;
+  background-color: rgba(255, 255, 255, 0.87)!important;
+  padding: 1em;
+}
+
+.profileHeader-goth {
+  max-height: 4em;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  border-bottom:1px gray solid;
+  margin-top:1em;
+  margin-bottom:1em;
 }

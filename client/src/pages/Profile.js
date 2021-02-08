@@ -4,10 +4,13 @@ import PostList from '../components/PostList';
 import { PostContext } from '../providers/PostProvider'
 import WindowChecker from '../utils/WindowChecker';
 import { StyleContext } from "../providers/StyleProvider"
-import MyProfile from "./MyProfile"
+import { Container, Col, Row } from "reactstrap"
+import { UserProfileContext } from "../providers/UserProfileProvider"
+import ProfileSummary from "../components/ProfileSummary"
 
 const Profile = () => {
   const { posts, getPostsByUserId } = useContext(PostContext);
+  const { userSummary, getUserSummary } = useContext(UserProfileContext);
   const { style } = useContext(StyleContext);
   const { id } = useParams();
   const userProfileId = parseInt(JSON.parse(localStorage.getItem('userProfile')).id);
@@ -16,33 +19,39 @@ const Profile = () => {
     window.scrollTo(0, 0)
     WindowChecker()
     getPostsByUserId(id)
-  }, []);
+    getUserSummary(id)
+  }, [id]);
 
   const PostChecker = () => {
-    if (posts.length > 0 && parseInt(id) === userProfileId) {
-      return (<div className={`postList${style.child} postList`}>
+    if (posts.length > 0) {
+      return (<Col xs="auto">
         <PostList posts={posts} />
-        <MyProfile />
-      </div>)
+      </Col>)
     } else if (posts.length === 0 && parseInt(id) === userProfileId) {
       return (<div className={`margin-whole${style.child}`}>
         <p className={`margin${style.child}`}>You have no posts!</p>
-        <MyProfile />
       </div>)
     } else if (posts.length === 0 && parseInt(id) !== userProfileId) {
       return (<div className={`margin-whole${style.child}`}>
         <p className={`margin${style.child}`}>This user has no posts!</p>
       </div>)
-    } else if (posts.length > 0 && parseInt(id) !== userProfileId) {
-      return (<div className={`postList${style.child} postList`}>
-        <PostList posts={posts} />
-      </div>)
+    }
+  }
+
+  const profileChecker = () => {
+    if (userSummary) {
+      return (<ProfileSummary profileSummary={userSummary[0]} />)
     }
   }
 
   return (
     <>
-      <PostChecker />
+      <Container className={`profileContainer${style.child}`}>
+        <Row>
+          {profileChecker()}
+          <PostChecker />
+        </Row>
+      </Container>
     </>
   );
 };

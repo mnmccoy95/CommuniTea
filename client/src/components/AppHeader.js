@@ -19,6 +19,8 @@ const AppHeader = () => {
   const history = useHistory();
   const [isOpen, setIsOpen] = useState(false);
 
+  const userId = parseInt(user.id);
+
 
   const toggle = () => setIsOpen(!isOpen);
 
@@ -69,7 +71,7 @@ const AppHeader = () => {
         <NavbarBrand className={`navbar-brand${style.child}`} tag={Link} to="/">
           CommuniTea
         </NavbarBrand>
-        <NavbarToggler onClick={toggle} />
+        <NavbarToggler className={` navbar-toggler${style.child}`} onClick={toggle} />
         <Collapse isOpen={isOpen} navbar>
           <Nav className="mr-auto" navbar>
             {user && user.approved === 1 ? (
@@ -90,7 +92,7 @@ const AppHeader = () => {
                   </NavLink>
                 </NavItem>
                 <NavItem>
-                  <NavLink className={`nav-link${style.child}`} to={`/profile/${parseInt(user.id)}`} tag={Link}>
+                  <NavLink className={`nav-link${style.child}`} to={`/profile/${userId}`} tag={Link}>
                     {user.displayName}
                   </NavLink>
                 </NavItem>

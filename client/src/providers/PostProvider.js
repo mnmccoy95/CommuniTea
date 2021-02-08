@@ -27,7 +27,7 @@ export function PostProvider(props) {
   };
 
   const getPostsByUserId = (id) => {
-    getToken().then((token) =>
+    return getToken().then((token) =>
       fetch(`${apiUrl}/getbyuser/${id}`, {
         method: "GET",
         headers: {

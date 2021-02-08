@@ -40,5 +40,18 @@ namespace CommuniTea.Repositories
             _context.SaveChanges();
         }
 
+        public List<UserProfileSummary> GetById(int id)
+        {
+            return _context.UserProfile.Where(p => p.Id == id)
+                .Select(up => new UserProfileSummary()
+                {
+                    Id = up.Id,
+                    ImageLocation = up.ImageLocation,
+                    DisplayName = up.DisplayName,
+                    Bio = up.Bio,
+                    Pronouns = up.Pronouns
+                }).ToList();
+        }
+
     }
 }

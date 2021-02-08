@@ -13,6 +13,7 @@ using CommuniTea.Models.ViewModels;
 
 namespace CommuniTea.Controllers
 {
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class UserProfileController : ControllerBase
@@ -38,6 +39,22 @@ namespace CommuniTea.Controllers
             else
             {
                 return Ok(user);
+            }
+
+        }
+
+        [HttpGet("getsummary/{id}")]
+        public IActionResult GetUserProfileSummary(int id)
+        {
+            var currentUser = GetCurrentUserProfile();
+            var user = _repo.GetById(id);
+            if (currentUser.Approved == 1)
+            {
+                return Ok(user);
+            }
+            else
+            {
+                return Unauthorized();
             }
 
         }
