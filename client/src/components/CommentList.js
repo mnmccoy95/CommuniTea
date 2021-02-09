@@ -83,7 +83,7 @@ const CommentList = ({ comments, postId }) => {
       if (comment.userProfileId === user.id) {
         return (
           <>
-            <ButtonGroup size="sm">
+            <ButtonGroup size="sm" className="commentBtns">
               <Button className={`btn btn-primary ownerBtns pinkBtn${style.child}`} onClick={showEditForm}>
                 Edit
             </Button>
@@ -114,13 +114,13 @@ const CommentList = ({ comments, postId }) => {
     }
 
     return (
-      <Card className={`col commentContainer${style.child}`}>
+      <Card className={`commentContainer${style.child}`}>
         <div className="context-container">
           {editing ? (
             <Form className="w-100 h-100">
               <InputGroup>
                 <Input
-                  rows="10"
+                  rows="3"
                   columns="60"
                   type="textarea"
                   className="commentTextEdit"
@@ -144,8 +144,11 @@ const CommentList = ({ comments, postId }) => {
             </Form>
           ) : (
               <>
-                <p className="commentText">{comment.content}</p>
-                {EditButton()}
+                <div className={`commentInfo${style.child}`}>
+                  <div className="commentOwner"><div>{comment.userProfile.displayName}:</div>{EditButton()}</div>
+                  <p className={`commentText${style.child}`}>{comment.content}</p>
+
+                </div>
               </>
             )}
         </div>
@@ -180,13 +183,14 @@ const CommentList = ({ comments, postId }) => {
             type="textarea"
             name="content"
             className="newCommentField"
+            placeholder="Write a comment..."
             onChange={(e) => handleNewComment(e)}
           />
           <ButtonGroup size="sm">
             <Button
               type="button"
               disabled={loading}
-              className={`ownerBtns pinkBtn${style.child}`}
+              className={`ownerBtns pinkBtn${style.child} commentBtn`}
               onClick={(e) => {
                 submitNewComment(e)
               }}>Comment</Button>

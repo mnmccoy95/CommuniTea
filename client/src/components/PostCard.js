@@ -118,7 +118,7 @@ const PostCard = ({ post }) => {
             </>
           )}
       </div>
-      <div className="postFooter">
+      <div className={`postFooter${style.child}`}>
         <TagList tags={post.postTag} />
         {inspChecker()}
       </div>

@@ -51,6 +51,10 @@ code {
   }
 }
 
+.postContainer {
+  padding-bottom: 1em;
+}
+
 .postCard {
   display: flex;
   flex-direction: column;
@@ -63,6 +67,7 @@ code {
   flex-direction: row;
   justify-content: space-between;
   margin-bottom: .5em;
+  border-bottom: 1px solid pink;
 }
 
 .tagList {
@@ -474,10 +479,17 @@ input[type="color"]:focus,
   margin-bottom:1em;
 }
 
+.commentInfo {
+  padding-left: 1em;
+  padding-right: 1em;
+  padding-bottom: 1em;
+  width: 100%;
+}
 
-
-
-
+.commentText {
+  text-align: left;
+  border-top: 1px pink solid;
+}
 
 /*-----------------Anything to do with color goes under here!----------------*/
 /*---------------------------------Classic--------------------------------*/
@@ -488,8 +500,6 @@ input[type="color"]:focus,
 }
 
 .margin-whole-classic{
-  background-image: url(./images/beige-simple.png);
-  background-repeat: repeat;
   height: 57em;
   width: 100%;
   display:flex;
@@ -662,6 +672,30 @@ input[type="color"]:focus,
   margin-bottom:1em;
 }
 
+.commentInfo-classic {
+  padding-left: 1em;
+  padding-right: 1em;
+  padding-bottom: 1em;
+  width: 100%;
+}
+
+.commentText-classic {
+  text-align: left;
+  border-top: 1px burlywood solid;
+}
+
+.postFooter-classic {
+  display:flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-bottom: .5em;
+  border-bottom: 1px solid burlywood;
+}
+
+.postContainer-classic {
+  padding-bottom: 1em;
+}
+
 /*-----------------Anything to do with color goes under here!----------------*/
 /*---------------------------------Goth--------------------------------*/
 
@@ -671,8 +705,6 @@ input[type="color"]:focus,
 }
 
 .margin-whole-goth{
-  background-image: url(./images/holylantern.jpg);
-  background-repeat: repeat;
   height: 57em;
   width: 100%;
   display:flex;
@@ -814,6 +846,7 @@ input[type="color"]:focus,
 
 .postContainer-goth {
   background-color: rgba(255, 255, 255, 0.87)!important;
+  padding-bottom: 1em;
 }
 
 .profileContainer-goth {
@@ -844,4 +877,38 @@ input[type="color"]:focus,
   border-bottom:1px gray solid;
   margin-top:1em;
   margin-bottom:1em;
+}
+
+.commentInfo-goth {
+  padding-left: 1em;
+  padding-right: 1em;
+  padding-bottom: 1em;
+  width: 100%;
+}
+
+.commentOwner {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.commentText-goth {
+  text-align: left;
+  border-top: 1px gray solid;
+}
+
+.commentBtn {
+  margin-top: 1.5em;
+}
+
+.newCommentField {
+  margin-top: .5em;
+}
+
+.postFooter-goth {
+  display:flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-bottom: .5em;
+  border-bottom: 1px solid black;
 }
