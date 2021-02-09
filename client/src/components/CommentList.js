@@ -1,6 +1,7 @@
 import React, { useContext, useState } from "react";
 import { UserProfileContext } from "../providers/UserProfileProvider"
 import { CommentContext } from "../providers/CommentProvider"
+import { Link } from "react-router-dom"
 import { Card, Button, ButtonGroup, Form, InputGroup, Input, Modal, ModalHeader, ModalBody, ModalFooter } from "reactstrap";
 import { StyleContext } from "../providers/StyleProvider"
 
@@ -12,6 +13,7 @@ const CommentList = ({ comments, postId }) => {
   const { getToken } = useContext(UserProfileContext)
   const [commentList, setCommentList] = useState(comments)
   const { updateComment } = useContext(CommentContext);
+  const [showComments, setShowComments] = useState(false);
 
 
   const handleNewComment = (event) => {
@@ -43,11 +45,15 @@ const CommentList = ({ comments, postId }) => {
     for (const m of matches) {
       m.value = ""
     }
+    setShowComments(true)
   }
 
   const commentChecker = () => {
-    if (comments) {
-      return (
+    if (comments.length < 1) {
+      return null;
+    }
+    if (comments && showComments === true) {
+      return (<>
         <div className="commentList">
           {commentList.map((c) => (
             <div className="comment" key={c.id}>
@@ -55,7 +61,11 @@ const CommentList = ({ comments, postId }) => {
             </div>
           ))}
         </div>
+        <Button onClick={(e) => { setShowComments(false) }} color="link" size="sm" className={`cancelBtn${style.child}`}>Hide Comments</Button>
+      </>
       )
+    } else if (comments && showComments === false) {
+      return (<Button onClick={(e) => { setShowComments(true) }} color="link" size="sm" className={`cancelBtn${style.child}`}>Show Comments</Button>)
     }
   }
 
@@ -145,7 +155,7 @@ const CommentList = ({ comments, postId }) => {
           ) : (
               <>
                 <div className={`commentInfo${style.child}`}>
-                  <div className="commentOwner"><div>{comment.userProfile.displayName}:</div>{EditButton()}</div>
+                  <div className="commentOwner"><Link className={`userName${style.child}`} to={`/profile/${comment.userProfileId}`}>{comment.userProfile.displayName}:</Link>{EditButton()}</div>
                   <p className={`commentText${style.child}`}>{comment.content}</p>
 
                 </div>
