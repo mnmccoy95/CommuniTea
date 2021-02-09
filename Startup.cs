@@ -41,7 +41,8 @@ namespace CommuniTea
             services.AddTransient<ISubRepository, SubRepository>();
             services.AddTransient<ICommentRepository, CommentRepository>();
 
-            services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+
+            services.AddDbContext<ApplicationDbContext>(options => options.UseNpgsql(BuildConnectionString()));
             var firebaseProjectId = Configuration.GetValue<string>("FirebaseProjectId");
             var googleTokenUrl = $"https://securetoken.google.com/{firebaseProjectId}";
             services
@@ -84,6 +85,17 @@ namespace CommuniTea
             {
                 endpoints.MapControllers();
             });
+        }
+
+        private string BuildConnectionString()
+        {
+            var server = Environment.GetEnvironmentVariable("DB_HOST");
+            var port = Environment.GetEnvironmentVariable("DB_PORT");
+            var database = Environment.GetEnvironmentVariable("DB_NAME");
+            var userId = Environment.GetEnvironmentVariable("USER_ID");
+            var password = Environment.GetEnvironmentVariable("PASSSWORD");
+
+            return $"Server={server};Port={port};Database={database};User Id={userId};Password={password}";
         }
     }
 }
