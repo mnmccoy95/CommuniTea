@@ -16,6 +16,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using CommuniTea.Repositories;
+using Microsoft.OpenApi.Models;
 
 namespace CommuniTea
 {
@@ -65,25 +66,16 @@ namespace CommuniTea
             .AddNewtonsoftJson(options =>
                 options.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore
             );
-        }
 
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
-        {
-            if (env.IsDevelopment())
+            services.AddControllers();
+            services.AddSwaggerGen(c =>
             {
-                app.UseDeveloperExceptionPage();
-            }
+                c.SwaggerDoc("v1", new OpenApiInfo { Title = "Sample Joke Application", Version = "v1" });
+            });
 
-            app.UseHttpsRedirection();
-
-            app.UseRouting();
-            app.UseAuthentication();
-            app.UseAuthorization();
-
-            app.UseEndpoints(endpoints =>
+            services.AddSpaStaticFiles(configuration =>
             {
-                endpoints.MapControllers();
+                configuration.RootPath = "client/build";
             });
         }
 
@@ -97,5 +89,39 @@ namespace CommuniTea
 
             return $"Server={server};Port={port};Database={database};User Id={userId};Password={password}";
         }
+
+        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        {
+            if (env.IsDevelopment())
+            {
+                app.UseDeveloperExceptionPage();
+                app.UseSwagger();
+                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "SampleApplication v1"));
+            }
+            if (env.IsProduction() || env.IsStaging() || env.IsEnvironment("Staging_2"))
+            {
+                app.UseExceptionHandler("/Error");
+            }
+
+            app.UseHttpsRedirection();
+            app.UseStaticFiles();
+            app.UseSpaStaticFiles();
+            app.UseRouting();
+            app.UseAuthentication();
+            app.UseAuthorization();
+
+            app.UseEndpoints(endpoints =>
+            {
+                endpoints.MapControllers();
+            });
+
+            app.UseSpa(spa =>
+            {
+                spa.Options.SourcePath = "client";
+            });
+        }
+
+        
     }
 }
