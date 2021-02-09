@@ -58,6 +58,7 @@ export function PostProvider(props) {
             post.authorImg = post.userProfile.imageLocation
           }
           setPosts(postsToUse)
+          window.scrollTo(0, 0)
         })
     );
   };

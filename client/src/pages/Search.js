@@ -4,7 +4,7 @@ import { PostContext } from "../providers/PostProvider"
 import { StyleContext } from "../providers/StyleProvider"
 
 const Search = () => {
-  const { getPostsByTagName } = useContext(PostContext);
+  const { getPostsByTagName, getAllPosts } = useContext(PostContext);
   const { style } = useContext(StyleContext);
   const [input, setInput] = useState("");
 
@@ -12,7 +12,7 @@ const Search = () => {
     evt.preventDefault();
 
     if (input === "") {
-
+      getAllPosts()
     } else {
       getPostsByTagName(input)
     }
