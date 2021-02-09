@@ -14,5 +14,6 @@ namespace CommuniTea.Models.ViewModels
         public string AuthorName { get; set; }
         public string AuthorImg { get; set; }
         public List<PostTag> PostTag { get; set; }
+        public List<Comment> Comments { get; set; }
     }
 }

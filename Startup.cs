@@ -39,6 +39,7 @@ namespace CommuniTea
             services.AddTransient<IAnswerRepository, AnswerRepository>();
             services.AddTransient<IInspirationRepository, InspirationRepository>();
             services.AddTransient<ISubRepository, SubRepository>();
+            services.AddTransient<ICommentRepository, CommentRepository>();
 
             services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
             var firebaseProjectId = Configuration.GetValue<string>("FirebaseProjectId");

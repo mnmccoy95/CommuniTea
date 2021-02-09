@@ -21,6 +21,7 @@ namespace CommuniTea.Repositories
         {
             return _context.Inspiration
                 .Include(i => i.Post).ThenInclude(p => p.UserProfile)
+                .Include(i => i.Post).ThenInclude(p => p.Comments).ThenInclude(c => c.UserProfile)
                 .Include(i => i.Post).ThenInclude(p => p.PostTag).ThenInclude(pt => pt.Tag)
                 .Where(i => i.UserProfileId == id)
                 .Select(i => new PostSummary()
@@ -31,7 +32,8 @@ namespace CommuniTea.Repositories
                     AuthorName = i.Post.UserProfile.DisplayName,
                     AuthorImg = i.Post.UserProfile.ImageLocation,
                     Context = i.Post.Content,
-                    PostTag = i.Post.PostTag
+                    PostTag = i.Post.PostTag,
+                    Comments = i.Post.Comments
                 })
                 .ToList();
         }

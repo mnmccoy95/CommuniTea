@@ -5,14 +5,13 @@ using System.Threading.Tasks;
 
 namespace CommuniTea.Models
 {
-    public class Post
+    public class Comment
     {
         public int Id { get; set; }
+        public string Content { get; set; }
         public int UserProfileId { get; set; }
         public UserProfile UserProfile { get; set; }
-        public string ImageLocation { get; set; }
-        public string Content { get; set; }
-        public List<PostTag> PostTag { get; set; }
-        public List<Comment> Comments { get; set; }
+        public int PostId { get; set; }
+        public Post Post { get; set; }
     }
 }

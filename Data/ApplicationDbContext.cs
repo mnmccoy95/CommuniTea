@@ -19,6 +19,7 @@ namespace CommuniTea.Data
         public DbSet<QuestionType> QuestionType { get; set; }
         public DbSet<Inspiration> Inspiration { get; set; }
         public DbSet<Sub> Subs { get; set; }
+        public DbSet<Comment> Comment { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Sub>()

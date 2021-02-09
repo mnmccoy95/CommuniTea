@@ -30,6 +30,7 @@ namespace CommuniTea.Repositories
         {
             return _context.Subs
                 .Include(s => s.ProviderUserProfile).ThenInclude(u => u.Post).ThenInclude(p => p.PostTag).ThenInclude(pt => pt.Tag)
+                .Include(s => s.ProviderUserProfile).ThenInclude(u => u.Post).ThenInclude(p => p.Comments).ThenInclude(c => c.UserProfile)
                 .Where(s => s.SubscriberUserProfileId == userId)
                 .Select(s => new SubscriptionVM()
                 {
@@ -42,7 +43,8 @@ namespace CommuniTea.Repositories
                         Id = p.Id,
                         ImageLocation = p.ImageLocation,
                         Context = p.Content,
-                        PostTag = p.PostTag
+                        PostTag = p.PostTag,
+                        Comments = p.Comments
 
                     }).ToList()
                 })

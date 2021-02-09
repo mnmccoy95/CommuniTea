@@ -22,6 +22,7 @@ namespace CommuniTea.Repositories
         {
             return _context.Post
                 .Include(p => p.UserProfile)
+                .Include(p => p.Comments).ThenInclude(c => c.UserProfile)
                 .Include(p => p.PostTag).ThenInclude(pt => pt.Tag)
                 .Select(p => new PostSummary()
                 {
@@ -31,8 +32,8 @@ namespace CommuniTea.Repositories
                     AuthorName = p.UserProfile.DisplayName,
                     AuthorImg = p.UserProfile.ImageLocation,
                     Context = p.Content,
-                    PostTag = p.PostTag
-
+                    PostTag = p.PostTag,
+                    Comments = p.Comments
                 }).OrderByDescending(p => p.Id).ToList();
         }
 
@@ -41,6 +42,7 @@ namespace CommuniTea.Repositories
             return _context.Post
                 .Include(p => p.UserProfile)
                 .Include(p => p.PostTag)
+                .Include(p => p.Comments)
                 .Where(p => p.Id == id)
                 .FirstOrDefault();
         }
@@ -65,6 +67,13 @@ namespace CommuniTea.Repositories
 
             var insp = _context.Inspiration.Where(i => i.PostId == id).ToList();
 
+            var comment = _context.Comment.Where(c => c.PostId == id).ToList();
+
+            foreach(Comment c in comment)
+            {
+                _context.Comment.Remove(c);
+            }
+
             foreach(Inspiration i in insp)
             {
                 _context.Inspiration.Remove(i);
@@ -83,6 +92,7 @@ namespace CommuniTea.Repositories
         {
             return _context.Post
                 .Include(p => p.PostTag).ThenInclude(pt => pt.Tag)
+                .Include(p => p.Comments).ThenInclude(c => c.UserProfile)
                 .Where(p => p.UserProfileId == id)
                 .Select(p => new PostSummary()
                 {
@@ -92,7 +102,8 @@ namespace CommuniTea.Repositories
                     AuthorName = p.UserProfile.DisplayName,
                     AuthorImg = p.UserProfile.ImageLocation,
                     Context = p.Content,
-                    PostTag = p.PostTag
+                    PostTag = p.PostTag,
+                    Comments = p.Comments
                 })
                 .ToList();
         }
@@ -103,6 +114,7 @@ namespace CommuniTea.Repositories
             return _context.PostTag
                 .Where(pt => pt.Tag.Name == name)
                 .Include(pt => pt.Post).ThenInclude(p => p.PostTag).ThenInclude(pt => pt.Tag)
+                .Include(pt => pt.Post).ThenInclude(p => p.Comments).ThenInclude(c => c.UserProfile)
                 .Include(pt => pt.Post.UserProfile)
                 .ToList();
         }

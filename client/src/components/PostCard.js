@@ -8,6 +8,7 @@ import RemoveInspBtn from "./RemoveInspBtn"
 import SubscriptionButton from "./SubscriptionBtn"
 import RemoveSubBtn from "./RemoveSubBtn"
 import { StyleContext } from "../providers/StyleProvider"
+import CommentList from "./CommentList";
 
 
 const PostCard = ({ post }) => {
@@ -16,6 +17,7 @@ const PostCard = ({ post }) => {
   const [isEditing, setIsEditing] = useState(false);
   const [pendingDelete, setPendingDelete] = useState(false);
   const [postEdits, setPostEdits] = useState("");
+
 
   const showEditForm = () => {
     setIsEditing(true);
@@ -119,6 +121,9 @@ const PostCard = ({ post }) => {
       <div className="postFooter">
         <TagList tags={post.postTag} />
         {inspChecker()}
+      </div>
+      <div className="postComments">
+        <CommentList comments={post.comments} postId={post.id} />
       </div>
       {/* DELETE CONFIRM MODAL */}
       <Modal isOpen={pendingDelete}>

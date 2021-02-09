@@ -17,6 +17,7 @@ import Home from '../pages/Home'
 import { SubProvider } from '../providers/SubProvider'
 import Profile from '../pages/Profile';
 import { StyleContext } from '../providers/StyleProvider'
+import { CommentProvider } from '../providers/CommentProvider'
 
 const ApplicationViews = () => {
   const { isLoggedIn, getCurrentUser } = useContext(UserProfileContext);
@@ -45,59 +46,67 @@ const ApplicationViews = () => {
 
         <PostTagProvider>
           <PostProvider>
-            <TagProvider>
-              <InspirationProvider>
-                <SubProvider>
-                  <Route path="/newpost">
-                    <NewPost />
-                  </Route>
+            <CommentProvider>
+              <TagProvider>
+                <InspirationProvider>
+                  <SubProvider>
+                    <Route path="/newpost">
+                      <NewPost />
+                    </Route>
 
-                  <Route path="/" exact>
-                    <Home />
-                  </Route>
-                </SubProvider>
-              </InspirationProvider>
-            </TagProvider>
+                    <Route path="/" exact>
+                      <Home />
+                    </Route>
+                  </SubProvider>
+                </InspirationProvider>
+              </TagProvider>
+            </CommentProvider>
           </PostProvider>
         </PostTagProvider>
 
         <PostTagProvider>
           <PostProvider>
-            <TagProvider>
-              <InspirationProvider>
-                <SubProvider>
-                  <Route path="/profile/:id">
-                    <Profile />
-                  </Route>
-                </SubProvider>
-              </InspirationProvider>
-            </TagProvider>
+            <CommentProvider>
+              <TagProvider>
+                <InspirationProvider>
+                  <SubProvider>
+                    <Route path="/profile/:id">
+                      <Profile />
+                    </Route>
+                  </SubProvider>
+                </InspirationProvider>
+              </TagProvider>
+            </CommentProvider>
           </PostProvider>
         </PostTagProvider>
         <PostTagProvider>
           <PostProvider>
-            <TagProvider>
-              <InspirationProvider>
-                <SubProvider>
-                  <Route path="/discover">
-                    <Discover />
-                  </Route>
-                </SubProvider>
-              </InspirationProvider>
-            </TagProvider>
+            <CommentProvider>
+              <TagProvider>
+                <InspirationProvider>
+                  <SubProvider>
+                    <Route path="/discover">
+                      <Discover />
+                    </Route>
+                  </SubProvider>
+                </InspirationProvider>
+              </TagProvider>
+            </CommentProvider>
           </PostProvider>
         </PostTagProvider>
         <PostTagProvider>
           <PostProvider>
-            <TagProvider>
-              <InspirationProvider>
-                <SubProvider>
-                  <Route path="/inspiration">
-                    <Inspiration />
-                  </Route>
-                </SubProvider>
-              </InspirationProvider>
-            </TagProvider>
+            <CommentProvider>
+              <TagProvider>
+                <InspirationProvider>
+                  <SubProvider>
+                    <Route path="/inspiration">
+                      <Inspiration />
+                    </Route>
+                  </SubProvider>
+                </InspirationProvider>
+              </TagProvider>
+            </CommentProvider>
           </PostProvider>
         </PostTagProvider>
 
