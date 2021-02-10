@@ -80,8 +80,10 @@ namespace CommuniTea
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, ILogger<Startup> logger)
         {
+            logger.LogInformation(BuildConnectionString());
+
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
@@ -117,6 +119,7 @@ namespace CommuniTea
             var database = Environment.GetEnvironmentVariable("DB_NAME");
             var userId = Environment.GetEnvironmentVariable("USER_ID");
             var password = Environment.GetEnvironmentVariable("PASSWORD");
+            
 
             return $"Server={server};Port={port};Database={database};User Id={userId};Password={password}";
         }

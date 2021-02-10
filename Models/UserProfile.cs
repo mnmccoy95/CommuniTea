@@ -9,6 +9,7 @@ namespace CommuniTea.Models
     [Table("userprofile")]
     public class UserProfile
     {
+
         public int Id { get; set; }
         public string DisplayName { get; set; }
         public string Email { get; set; }
