@@ -27,5 +27,6 @@ namespace CommuniTea.Data
                 .WithMany(up => up.Sub)
                 .HasForeignKey(s => s.SubscriberUserProfileId);
         }
+
     }
 }
