@@ -2,9 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace CommuniTea.Models
 {
+    [Table("inspiration")]
     public class Inspiration
     {
         public int Id { get; set; }
