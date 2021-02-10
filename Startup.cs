@@ -87,7 +87,7 @@ namespace CommuniTea
                 app.UseDeveloperExceptionPage();
             }
 
-            app.UseHttpsRedirection();
+            //app.UseHttpsRedirection();
             app.Use(async (context, next) =>
             {
                 await next();
