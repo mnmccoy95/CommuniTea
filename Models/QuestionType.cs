@@ -9,7 +9,9 @@ namespace CommuniTea.Models
     [Table("questiontype")]
     public class QuestionType
     {
+        [Column("id")]
         public int Id { get; set; }
+        [Column("name")]
         public string Name { get; set; }
     }
 }
