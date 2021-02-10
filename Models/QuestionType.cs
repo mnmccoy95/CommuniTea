@@ -6,7 +6,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace CommuniTea.Models
 {
-    [Table("questionType")]
+    [Table("questiontype")]
     public class QuestionType
     {
         public int Id { get; set; }

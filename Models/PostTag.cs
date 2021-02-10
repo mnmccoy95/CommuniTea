@@ -6,7 +6,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace CommuniTea.Models
 {
-    [Table("postTag")]
+    [Table("posttag")]
     public class PostTag
     {
         public int Id { get; set; }
