@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
-import { useHistory } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { QuizContext } from "../providers/QuizProvider"
 import { UserProfileContext } from "../providers/UserProfileProvider"
 import WindowChecker from "../utils/WindowChecker";
@@ -126,6 +126,12 @@ const Quiz = () => {
     <section className="new-post-form-container">
       <div className="new-post-form-area">
         <h2 className="new-post-form-title">Quiz Time!</h2>
+        <Link className="rules-link" to="/rules">Check out the community rules here.</Link>
+        <div className="instruction-container">
+          <div>This quiz MUST be completed AND passed 100% before you can join.</div>
+          <br />
+          <div className="one-chance">You only get one chance!</div>
+        </div>
         <form className="quiz-form">
           {quiz.map((q) => (
 

@@ -18,6 +18,7 @@ import { SubProvider } from '../providers/SubProvider'
 import Profile from '../pages/Profile';
 import { StyleContext } from '../providers/StyleProvider'
 import { CommentProvider } from '../providers/CommentProvider'
+import Rules from '../pages/Rules';
 
 const ApplicationViews = () => {
   const { isLoggedIn, getCurrentUser } = useContext(UserProfileContext);
@@ -128,6 +129,9 @@ const ApplicationViews = () => {
       </Route>
       <Route path="/register">
         <Register />
+      </Route>
+      <Route path="/rules">
+        <Rules />
       </Route>
       {approvalChecker()}
     </Switch>

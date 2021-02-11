@@ -80,6 +80,7 @@ const Register = () => {
     <div className="login-form new-post-form-container">
       <form onSubmit={handleSubmit} className="new-post-form-area">
         <h2 className="text-center">Register</h2>
+        <div className="register-info">Upload a Profile Picture</div>
         <div className="form-group uploadForm">
           <div className='defaultImageContainer'>
             <img className='defaultImage-register' src={localStorage.image ? localStorage.image : 'https://build.dfomer.com/wp-content/uploads/2016/04/dummy-post-horisontal-thegem-blog-default.jpg'} />

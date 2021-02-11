@@ -20,11 +20,43 @@ code {
   cursor: pointer;
 }
 
+.logo-margin {
+  margin-right: .5em;
+}
+
 .vert-align {
   top:0;
   position:fixed;
   z-index: 100;
   width: 100%;
+}
+
+.instruction-container {
+  text-align: left;
+  margin-top: 1em;
+}
+
+.one-chance {
+  text-decoration: underline;
+  margin-bottom: 2em;
+}
+
+.login-title {
+  font-family: 'Parisienne', cursive;
+  font-size: 4em;
+  color: grey;
+}
+
+.rules-box {
+  text-align: left;
+}
+
+.login-subtitle {
+  color: grey;
+}
+
+.register-info {
+  font-size: 1.5em;
 }
 
 .userImage {
