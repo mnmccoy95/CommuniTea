@@ -37,6 +37,8 @@ const Login = () => {
 
   return (
     <div className="login-form new-post-form-container" >
+      <div className="login-title">Welcome to CommuniTea</div>
+      <h5 className="login-subtitle">private social media for lolitas</h5>
       <form onSubmit={handleSubmit} className="new-post-form-area">
         <h2 className="text-center">Login</h2>
         <div className="form-group">

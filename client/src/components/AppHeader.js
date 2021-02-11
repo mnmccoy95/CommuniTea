@@ -67,6 +67,7 @@ const AppHeader = () => {
     <div className="vert-align">
       <Navbar className={`navbar${style.child}`} dark expand="md">
         <NavbarBrand className={`navbar-brand${style.child}`} tag={Link} to="/">
+          <i class="fas fa-coffee logo-margin"></i>
           CommuniTea
         </NavbarBrand>
         <NavbarToggler className={` navbar-toggler${style.child}`} onClick={toggle} />
